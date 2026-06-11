@@ -5,12 +5,15 @@ import { TIME_SLOTS } from '@/lib/constants'
 export async function GET() {
   try {
     const supabaseAdmin = getSupabaseAdmin()
-    const { data, error } = await supabaseAdmin
+    const { data, error, status, statusText } = await supabaseAdmin
       .from('rsvps')
       .select('time_slot')
       .eq('cancelled', false)
 
-    if (error) throw error
+    if (error) {
+      console.error('Supabase error:', JSON.stringify({ error, status, statusText }))
+      throw error
+    }
 
     const counts: Record<string, number> = {}
     TIME_SLOTS.forEach(slot => { counts[slot.id] = 0 })
@@ -30,6 +33,7 @@ export async function GET() {
 
     return NextResponse.json(availability)
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 })
+    console.error('Capacity route error:', err?.message, err?.code, err?.details)
+    return NextResponse.json({ error: err.message, code: err.code, details: err.details }, { status: 500 })
   }
 }
