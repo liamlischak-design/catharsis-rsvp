@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabaseAdmin } from '@/lib/supabase'
-import { TIME_SLOTS, EVENT } from '@/lib/constants'
+import { getSupabaseAdmin } from '@/lib/supabase'
+import { TIME_SLOTS } from '@/lib/constants'
 import twilio from 'twilio'
-
-const twilioClient = twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-)
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,7 +17,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid time slot.' }, { status: 400 })
     }
 
-    // Check capacity
+    const supabaseAdmin = getSupabaseAdmin()
+
     const { count, error: countError } = await supabaseAdmin
       .from('rsvps')
       .select('*', { count: 'exact', head: true })
@@ -35,7 +31,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'This time slot is full.' }, { status: 409 })
     }
 
-    // Check for duplicate phone/slot
     const { data: existing } = await supabaseAdmin
       .from('rsvps')
       .select('id')
@@ -48,7 +43,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'This phone number already has an RSVP for this time slot.' }, { status: 409 })
     }
 
-    // Insert RSVP
     const { data, error } = await supabaseAdmin
       .from('rsvps')
       .insert({
@@ -63,7 +57,11 @@ export async function POST(req: NextRequest) {
 
     if (error) throw error
 
-    // Send SMS confirmation
+    const twilioClient = twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    )
+
     const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL}/cancel?token=${data.cancel_token}`
     const smsBody = `Catharsis Soundrooms invites you to Where They Don't Make Roads by Micah Peay — June 25th at ${timeSlot}. 2100 Zeno Pl, Venice. Arrive 10 min early 🖤\n\nTo cancel: ${cancelUrl}\n\nFor help, reply HELP. To opt-out, reply STOP. Msg & data rates may apply.`
 
