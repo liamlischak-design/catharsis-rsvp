@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --off-white: #f0ede8;
+  --grey: #888888;
+  --grey-light: #333333;
+  --grey-mid: #555555;
+}
+
+html, body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.display {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+}
+
+.display-italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+input, textarea {
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  outline: none;
+  padding: 14px 16px;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+input:focus {
+  border-color: #fff;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
