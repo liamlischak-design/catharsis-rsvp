@@ -195,11 +195,30 @@ export default function Home() {
     <>
       <style>{`
         @media (max-width: 768px) {
-          .booking-right { width: 100% !important; margin: 0 !important; padding: 32px 24px 60px !important; }
-          .logo-mobile { max-width: 180px !important; }
+          .booking-layout {
+            flex-direction: column !important;
+            background-image: none !important;
+            background-color: #dfd6cd !important;
+          }
+          .mobile-hero {
+            display: block !important;
+          }
+          .booking-right {
+            width: 100% !important;
+            min-height: unset !important;
+            padding: 36px 24px 60px !important;
+            background: transparent !important;
+          }
+          .desktop-only {
+            display: none !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .mobile-hero { display: none !important; }
+          .desktop-only { display: flex !important; }
         }
       `}</style>
-      <main style={{
+      <main className="booking-layout" style={{
         minHeight: '100vh',
         backgroundImage: 'url(/micah-peay-v5.png)',
         backgroundSize: 'cover',
@@ -210,6 +229,17 @@ export default function Home() {
         alignItems: 'stretch',
         justifyContent: 'flex-end',
       }}>
+        {/* Mobile hero image with logo overlay */}
+        <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
+          <div style={{ position: 'absolute', top: '6%', left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
+            <LogoLockup width={280} />
+          </div>
+          <img
+            src="/micah-peay-mobile.png"
+            alt="Where They Don't Make Roads — Micah Peay"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </div>
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
@@ -217,7 +247,7 @@ export default function Home() {
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
             <LogoLockup width={360} />
           </div>
 
