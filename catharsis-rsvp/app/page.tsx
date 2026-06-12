@@ -22,29 +22,12 @@ const CORRECT_PASSWORD = 'v1'
 
 function LogoLockup({ width = 480 }: { width?: number }) {
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: width, margin: '0 auto' }}>
-      <Image
-        src="/catharsis-logo.png"
-        alt="Catharsis"
-        width={960}
-        height={540}
-        style={{ width: '100%', height: 'auto', display: 'block', mixBlendMode: 'screen' as const }}
-        priority
+    <div style={{ width: '100%', maxWidth: width, margin: '0 auto' }}>
+      <img
+        src="/catharsis-lockup.svg"
+        alt="Catharsis Soundrooms"
+        style={{ width: '100%', height: 'auto', display: 'block' }}
       />
-      <div style={{
-        position: 'absolute',
-        bottom: '4%',
-        right: '6%',
-        width: '26%',
-      }}>
-        <Image
-          src="/soundrooms.png"
-          alt="Soundrooms"
-          width={400}
-          height={100}
-          style={{ width: '100%', height: 'auto', display: 'block', mixBlendMode: 'screen' as const }}
-        />
-      </div>
     </div>
   )
 }
