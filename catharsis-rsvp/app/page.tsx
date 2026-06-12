@@ -204,7 +204,7 @@ export default function Home() {
         backgroundImage: 'url(/micah-peay-v5.png)',
         backgroundSize: 'contain',
         backgroundPosition: 'left center',
-        backgroundColor: '#d9cfc6',
+        backgroundColor: '#dfd6cd',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
         alignItems: 'stretch',
