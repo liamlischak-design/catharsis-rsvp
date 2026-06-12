@@ -102,9 +102,9 @@ export default function Home() {
 
   if (!unlocked) {
     return (
-      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
-        <div style={{ maxWidth: '520px', width: '100%', textAlign: 'center' }}>
-          <LogoLockup width={520} />
+      <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: '#000' }}>
+        <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
+          <LogoLockup width={680} />
           <form onSubmit={handlePasswordSubmit} style={{ marginTop: '48px' }}>
             <input
               type="password"
