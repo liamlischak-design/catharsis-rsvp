@@ -202,8 +202,9 @@ export default function Home() {
       <main style={{
         minHeight: '100vh',
         backgroundImage: 'url(/micah-peay-artwork.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
+        backgroundSize: 'contain',
+        backgroundPosition: 'left center',
+        backgroundColor: '#d9cfc6',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
         alignItems: 'stretch',
@@ -214,8 +215,7 @@ export default function Home() {
           minHeight: '100vh',
           padding: '48px 40px 60px',
           overflowY: 'auto',
-          background: 'rgba(245, 240, 235, 0.88)',
-          backdropFilter: 'blur(2px)',
+          background: 'transparent',
         }}>
           <div className="logo-mobile" style={{ maxWidth: '260px', marginBottom: '32px' }}>
             <LogoLockup width={260} />
