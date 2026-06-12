@@ -217,19 +217,17 @@ export default function Home() {
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div className="logo-mobile" style={{ maxWidth: '260px', marginBottom: '32px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
             <LogoLockup width={260} />
           </div>
 
-          <div style={{ marginBottom: '20px' }}>
-            <div style={{ marginBottom: '16px', textAlign: 'center' }}>
-              <p style={{ fontSize: '11px', color: '#8a7d74', letterSpacing: '0.08em', marginBottom: '4px' }}>June 25th, 2026 @ Satellite</p>
-              <p style={{ fontSize: '11px', color: '#8a7d74', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</p>
-            </div>
+          <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+            <p style={{ fontSize: '14px', color: '#8a7d74', letterSpacing: '0.08em', marginBottom: '4px' }}>June 25th, 2026 @ Satellite</p>
+            <p style={{ fontSize: '14px', color: '#8a7d74', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</p>
           </div>
 
-          <div style={{ paddingTop: '4px', marginBottom: '24px' }}>
-            <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.9, letterSpacing: '0.02em' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em' }}>
               Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted.
             </p>
           </div>
