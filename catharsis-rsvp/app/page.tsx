@@ -202,7 +202,7 @@ export default function Home() {
       <main style={{
         minHeight: '100vh',
         backgroundImage: 'url(/micah-peay-v5.png)',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundPosition: 'left center',
         backgroundColor: '#dfd6cd',
         backgroundRepeat: 'no-repeat',
@@ -218,7 +218,7 @@ export default function Home() {
           background: 'transparent',
         }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
-            <LogoLockup width={260} />
+            <LogoLockup width={360} />
           </div>
 
           <div style={{ marginBottom: '20px', textAlign: 'center' }}>
@@ -228,7 +228,7 @@ export default function Home() {
 
           <div style={{ marginBottom: '24px' }}>
             <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em' }}>
-              Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted.
+              Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted. Each album listening session runs approximately 25 minutes.
             </p>
           </div>
 
