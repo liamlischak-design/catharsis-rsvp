@@ -203,7 +203,7 @@ export default function Home() {
         minHeight: '100vh',
         backgroundImage: 'url(/micah-peay-v5.png)',
         backgroundSize: 'cover',
-        backgroundPosition: 'left center',
+        backgroundPosition: 'left top',
         backgroundColor: '#dfd6cd',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
