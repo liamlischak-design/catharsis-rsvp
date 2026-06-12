@@ -20,6 +20,35 @@ interface FormData {
 
 const CORRECT_PASSWORD = 'v1'
 
+function LogoLockup({ width = 480 }: { width?: number }) {
+  return (
+    <div style={{ position: 'relative', width: '100%', maxWidth: width, margin: '0 auto' }}>
+      <Image
+        src="/catharsis-logo.png"
+        alt="Catharsis"
+        width={960}
+        height={540}
+        style={{ width: '100%', height: 'auto', display: 'block' }}
+        priority
+      />
+      <div style={{
+        position: 'absolute',
+        bottom: '12%',
+        right: '8%',
+        width: '28%',
+      }}>
+        <Image
+          src="/soundrooms.png"
+          alt="Soundrooms"
+          width={400}
+          height={100}
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        />
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const [unlocked, setUnlocked] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
@@ -91,14 +120,9 @@ export default function Home() {
   if (!unlocked) {
     return (
       <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
-        <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
-          <div style={{ marginBottom: '16px' }}>
-            <Image src="/catharsis-logo.png" alt="Catharsis" width={480} height={270} style={{ width: '100%', height: 'auto' }} priority />
-          </div>
-          <div style={{ marginBottom: '48px' }}>
-            <Image src="/soundrooms.png" alt="Soundrooms" width={480} height={120} style={{ width: '60%', height: 'auto', margin: '0 auto' }} />
-          </div>
-          <form onSubmit={handlePasswordSubmit}>
+        <div style={{ maxWidth: '520px', width: '100%', textAlign: 'center' }}>
+          <LogoLockup width={520} />
+          <form onSubmit={handlePasswordSubmit} style={{ marginTop: '48px' }}>
             <input
               type="password"
               placeholder="enter password"
@@ -150,11 +174,8 @@ export default function Home() {
     return (
       <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
         <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
-          <div style={{ marginBottom: '4px' }}>
-            <Image src="/catharsis-logo.png" alt="Catharsis" width={320} height={180} style={{ width: '66%', height: 'auto', margin: '0 auto' }} />
-          </div>
           <div style={{ marginBottom: '32px' }}>
-            <Image src="/soundrooms.png" alt="Soundrooms" width={320} height={80} style={{ width: '40%', height: 'auto', margin: '0 auto' }} />
+            <LogoLockup width={320} />
           </div>
           <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#555', marginBottom: '8px', textTransform: 'uppercase' }}>
             You are confirmed
@@ -190,13 +211,8 @@ export default function Home() {
   return (
     <main style={{ minHeight: '100vh', padding: '60px 24px 80px', background: '#000' }}>
       <div style={{ maxWidth: '560px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '48px', textAlign: 'center' }}>
-          <div style={{ marginBottom: '4px' }}>
-            <Image src="/catharsis-logo.png" alt="Catharsis" width={560} height={315} style={{ width: '100%', height: 'auto' }} priority />
-          </div>
-          <div>
-            <Image src="/soundrooms.png" alt="Soundrooms" width={560} height={140} style={{ width: '55%', height: 'auto', margin: '0 auto' }} />
-          </div>
+        <div style={{ marginBottom: '40px' }}>
+          <LogoLockup width={560} />
         </div>
 
         <div style={{ marginBottom: '48px' }}>
