@@ -155,33 +155,33 @@ export default function Home() {
 
   if (submitted) {
     return (
-      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
+      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #d9cfc6 70%, #c8bdb2 100%)' }}>
         <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
           <div style={{ marginBottom: '32px' }}>
             <LogoLockup width={320} />
           </div>
-          <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#555', marginBottom: '8px', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#7a6e66', marginBottom: '8px', textTransform: 'uppercase' }}>
             You are confirmed
           </p>
           <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: '38px', lineHeight: 1.1, marginBottom: '8px', color: '#fff' }}>
             Where They Don&apos;t<br />Make Roads
           </h1>
-          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#555', marginBottom: '32px' }}>Micah Peay</p>
-          <div style={{ borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a', padding: '24px 0', marginBottom: '28px' }}>
+          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#7a6e66', marginBottom: '32px' }}>Micah Peay</p>
+          <div style={{ borderTop: '1px solid #c8bdb2', borderBottom: '1px solid #c8bdb2', padding: '24px 0', marginBottom: '28px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Session</span>
-              <span style={{ fontSize: '14px', color: '#fff' }}>{selectedSlot}, June 25th</span>
+              <span style={{ fontSize: '11px', color: '#7a6e66', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Session</span>
+              <span style={{ fontSize: '14px', color: '#2a2a2a' }}>{selectedSlot}, June 25th</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Location</span>
-              <span style={{ fontSize: '14px', color: '#fff', textAlign: 'right' }}>2100 Zeno Pl<br />Venice, CA 90291</span>
+              <span style={{ fontSize: '11px', color: '#7a6e66', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Location</span>
+              <span style={{ fontSize: '14px', color: '#2a2a2a', textAlign: 'right' }}>2100 Zeno Pl<br />Venice, CA 90291</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Name</span>
-              <span style={{ fontSize: '14px', color: '#fff' }}>{form.firstName} {form.lastName}</span>
+              <span style={{ fontSize: '11px', color: '#7a6e66', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Name</span>
+              <span style={{ fontSize: '14px', color: '#2a2a2a' }}>{form.firstName} {form.lastName}</span>
             </div>
           </div>
-          <p style={{ fontSize: '12px', color: '#555', lineHeight: 1.9, letterSpacing: '0.04em' }}>
+          <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.9, letterSpacing: '0.04em' }}>
             A confirmation has been sent to your phone.<br />
             Please arrive 10 minutes before your session.<br />
             To cancel, use the link in your confirmation text.
@@ -192,124 +192,132 @@ export default function Home() {
   }
 
   return (
-    <main style={{ minHeight: '100vh', padding: '60px 24px 80px', background: '#000' }}>
-      <div style={{ maxWidth: '560px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '40px' }}>
-          <LogoLockup width={560} />
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .booking-layout { flex-direction: column !important; }
+          .booking-left { width: 100% !important; height: 280px !important; min-height: unset !important; }
+          .booking-right { width: 100% !important; padding: 32px 24px 60px !important; }
+          .logo-mobile { max-width: 200px !important; }
+        }
+      `}</style>
+      <main className="booking-layout" style={{ display: 'flex', minHeight: '100vh', background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #d9cfc6 70%, #c8bdb2 100%)' }}>
+        <div className="booking-left" style={{ width: '50%', minHeight: '100vh', flexShrink: 0, overflow: 'hidden' }}>
+          <img
+            src="/micah-peay-artwork.png"
+            alt="Where They Don't Make Roads — Micah Peay"
+            style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center center', display: 'block' }}
+          />
         </div>
 
-        <div style={{ marginBottom: '48px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#444', marginBottom: '16px', textTransform: 'uppercase', textAlign: 'center' }}>
-            Presents
-          </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(32px, 7vw, 50px)', lineHeight: 1.05, marginBottom: '10px', color: '#fff', textAlign: 'center' }}>
-            Where They Don&apos;t<br />Make Roads
-          </h1>
-          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#555', marginBottom: '20px', textAlign: 'center' }}>
-            Micah Peay
-          </p>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: '12px', color: '#444', letterSpacing: '0.08em' }}>June 25th, 2026</span>
-            <span style={{ color: '#333' }}>—</span>
-            <span style={{ fontSize: '12px', color: '#444', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</span>
+        <div className="booking-right" style={{ width: '50%', padding: '48px 40px 60px', overflowY: 'auto' }}>
+          <div className="logo-mobile" style={{ maxWidth: '260px', marginBottom: '32px' }}>
+            <LogoLockup width={260} />
           </div>
-        </div>
 
-        <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: '32px', marginBottom: '40px' }}>
-          <p style={{ fontSize: '13px', color: '#555', lineHeight: 1.9, letterSpacing: '0.02em' }}>
-            Come experience a new visual format for listening to recorded albums. Please arrive 10 minutes early before your scheduled session to ensure you don&apos;t miss a minute.
-          </p>
-        </div>
-
-        <div style={{ marginBottom: '40px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#444', marginBottom: '16px', textTransform: 'uppercase' }}>
-            Select a session
-          </p>
-          {slotsLoading ? (
-            <p style={{ fontSize: '13px', color: '#444' }}>Loading availability...</p>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-              {slots.map(slot => {
-                const isFull = slot.available === 0
-                const isAlmostFull = slot.available <= 2 && slot.available > 0
-                const isSelected = selectedSlot === slot.id
-                return (
-                  <button
-                    key={slot.id}
-                    onClick={() => !isFull && setSelectedSlot(slot.id)}
-                    disabled={isFull}
-                    style={{
-                      background: isSelected ? '#fff' : 'transparent',
-                      border: `1px solid ${isSelected ? '#fff' : isFull ? '#1a1a1a' : '#222'}`,
-                      color: isSelected ? '#000' : isFull ? '#2a2a2a' : '#fff',
-                      padding: '16px 8px',
-                      textAlign: 'center',
-                      cursor: isFull ? 'not-allowed' : 'pointer',
-                      transition: 'all 0.15s',
-                    }}
-                  >
-                    <div style={{ fontSize: '14px', fontWeight: 400, marginBottom: '4px', letterSpacing: '0.05em' }}>
-                      {slot.label}
-                    </div>
-                    <div style={{ fontSize: '10px', letterSpacing: '0.1em', color: isSelected ? '#555' : isFull ? '#2a2a2a' : isAlmostFull ? '#666' : '#444', textTransform: 'uppercase' }}>
-                      {isFull ? 'Full' : isAlmostFull ? `${slot.available} left` : 'Available'}
-                    </div>
-                  </button>
-                )
-              })}
+          <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '16px', textAlign: 'center' }}>
+              <p style={{ fontSize: '11px', color: '#8a7d74', letterSpacing: '0.08em', marginBottom: '4px' }}>June 25th, 2026 @ Satellite</p>
+              <p style={{ fontSize: '11px', color: '#8a7d74', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</p>
             </div>
-          )}
-        </div>
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#444', marginBottom: '16px', textTransform: 'uppercase' }}>
-            Your information
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
-            <input type="text" placeholder="First name" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} required />
-            <input type="text" placeholder="Last name" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} required />
+          <div style={{ borderTop: '1px solid #c8bdb2', paddingTop: '20px', marginBottom: '24px' }}>
+            <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.9, letterSpacing: '0.02em' }}>
+              Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted.
+            </p>
           </div>
-          <div style={{ marginBottom: '8px' }}>
-            <input type="tel" placeholder="Phone number" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} required />
-          </div>
+
           <div style={{ marginBottom: '24px' }}>
-            <input type="email" placeholder="Email address" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
+            <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#8a7d74', marginBottom: '12px', textTransform: 'uppercase' }}>
+              Select a session
+            </p>
+            {slotsLoading ? (
+              <p style={{ fontSize: '13px', color: '#8a7d74' }}>Loading availability...</p>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
+                {slots.map(slot => {
+                  const isFull = slot.available === 0
+                  const isAlmostFull = slot.available <= 2 && slot.available > 0
+                  const isSelected = selectedSlot === slot.id
+                  return (
+                    <button
+                      key={slot.id}
+                      onClick={() => !isFull && setSelectedSlot(slot.id)}
+                      disabled={isFull}
+                      style={{
+                        background: isSelected ? '#2a2a2a' : 'transparent',
+                        border: `1px solid ${isSelected ? '#2a2a2a' : isFull ? '#d8d0c8' : '#8a7d74'}`,
+                        color: isSelected ? '#f5f0eb' : isFull ? '#c8bdb2' : '#2a2a2a',
+                        padding: '12px 6px',
+                        textAlign: 'center',
+                        cursor: isFull ? 'not-allowed' : 'pointer',
+                        transition: 'all 0.15s',
+                      }}
+                    >
+                      <div style={{ fontSize: '13px', fontWeight: 400, marginBottom: '3px', letterSpacing: '0.05em' }}>
+                        {slot.label}
+                      </div>
+                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : isFull ? '#d8d0c8' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
+                        {isFull ? 'Full' : isAlmostFull ? `${slot.available} left` : 'Available'}
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
           </div>
 
-          {error && (
-            <p style={{ fontSize: '12px', color: '#cc4444', marginBottom: '16px', letterSpacing: '0.05em' }}>{error}</p>
-          )}
+          <form onSubmit={handleSubmit}>
+            <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#8a7d74', marginBottom: '12px', textTransform: 'uppercase' }}>
+              Your information
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '6px' }}>
+              <input type="text" placeholder="First name" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} required />
+              <input type="text" placeholder="Last name" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} required />
+            </div>
+            <div style={{ marginBottom: '6px' }}>
+              <input type="tel" placeholder="Phone number" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} required />
+            </div>
+            <div style={{ marginBottom: '20px' }}>
+              <input type="email" placeholder="Email address" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
+            </div>
 
-          <button
-            type="submit"
-            disabled={loading || !selectedSlot}
-            style={{
-              background: selectedSlot && !loading ? '#fff' : '#0a0a0a',
-              border: `1px solid ${selectedSlot && !loading ? '#fff' : '#1a1a1a'}`,
-              color: selectedSlot && !loading ? '#000' : '#333',
-              fontSize: '11px',
-              fontWeight: 500,
-              letterSpacing: '0.15em',
-              padding: '18px 32px',
-              textTransform: 'uppercase',
-              width: '100%',
-              cursor: selectedSlot && !loading ? 'pointer' : 'not-allowed',
-            }}
-          >
-            {loading ? 'Reserving...' : 'Reserve My Spot'}
-          </button>
+            {error && (
+              <p style={{ fontSize: '12px', color: '#cc4444', marginBottom: '16px', letterSpacing: '0.05em' }}>{error}</p>
+            )}
 
-          <p style={{ fontSize: '11px', color: '#333', marginTop: '16px', lineHeight: 1.8, letterSpacing: '0.03em' }}>
-            By reserving, you consent to receive SMS confirmation and reminders for this event.
-            Msg &amp; data rates may apply. Reply STOP to opt out.
-          </p>
-        </form>
+            <button
+              type="submit"
+              disabled={loading || !selectedSlot}
+              style={{
+                background: selectedSlot && !loading ? '#2a2a2a' : 'transparent',
+                border: `1px solid ${selectedSlot && !loading ? '#2a2a2a' : '#c8bdb2'}`,
+                color: selectedSlot && !loading ? '#f5f0eb' : '#b0a49c',
+                fontSize: '11px',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                padding: '16px 32px',
+                textTransform: 'uppercase',
+                width: '100%',
+                cursor: selectedSlot && !loading ? 'pointer' : 'not-allowed',
+              }}
+            >
+              {loading ? 'Reserving...' : 'Reserve My Spot'}
+            </button>
 
-        <div style={{ borderTop: '1px solid #111', marginTop: '60px', paddingTop: '24px', display: 'flex', gap: '24px' }}>
-          <a href="/privacy" style={{ fontSize: '10px', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
-          <a href="/terms" style={{ fontSize: '10px', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
+            <p style={{ fontSize: '11px', color: '#9a8d84', marginTop: '14px', lineHeight: 1.8, letterSpacing: '0.03em' }}>
+              By reserving, you consent to receive SMS confirmation and reminders for this event.
+              Msg &amp; data rates may apply. Reply STOP to opt out.
+            </p>
+          </form>
+
+          <div style={{ borderTop: '1px solid #c8bdb2', marginTop: '40px', paddingTop: '20px', display: 'flex', gap: '24px' }}>
+            <a href="/privacy" style={{ fontSize: '10px', color: '#9a8d84', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
+            <a href="/terms" style={{ fontSize: '10px', color: '#9a8d84', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
