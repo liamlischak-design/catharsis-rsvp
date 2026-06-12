@@ -102,7 +102,7 @@ export default function Home() {
 
   if (!unlocked) {
     return (
-      <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: '#000' }}>
+      <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #d9cfc6 70%, #c8bdb2 100%)' }}>
         <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
           <LogoLockup width={680} />
           <form onSubmit={handlePasswordSubmit} style={{ marginTop: '48px' }}>
@@ -115,8 +115,8 @@ export default function Home() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                borderBottom: `1px solid ${passwordError ? '#cc4444' : '#333'}`,
-                color: '#fff',
+                borderBottom: `1px solid ${passwordError ? '#cc4444' : '#8a7d74'}`,
+                color: '#2a2a2a',
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: '18px',
                 fontWeight: 300,
@@ -135,8 +135,8 @@ export default function Home() {
               type="submit"
               style={{
                 background: 'transparent',
-                border: '1px solid #555',
-                color: '#aaa',
+                border: '1px solid #8a7d74',
+                color: '#5a4e45',
                 cursor: 'pointer',
                 fontSize: '13px',
                 letterSpacing: '0.25em',
