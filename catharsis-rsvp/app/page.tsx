@@ -201,7 +201,7 @@ export default function Home() {
       `}</style>
       <main style={{
         minHeight: '100vh',
-        backgroundImage: 'url(/micah-peay-artwork.png)',
+        backgroundImage: 'url(/micah-peay-v2.png)',
         backgroundSize: 'contain',
         backgroundPosition: 'left center',
         backgroundColor: '#d9cfc6',
@@ -213,7 +213,7 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '48px 32px 60px',
+          padding: '40px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
