@@ -38,8 +38,8 @@ html, body {
 
 input, textarea {
   background: transparent;
-  border: 1px solid #333;
-  color: #fff;
+  border: 1px solid #8a7d74;
+  color: #2a2a2a;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 300;
@@ -51,11 +51,11 @@ input, textarea {
 }
 
 input::placeholder {
-  color: #888;
+  color: #a89e96;
 }
 
 input:focus {
-  border-color: #fff;
+  border-color: #2a2a2a;
 }
 
 button {
