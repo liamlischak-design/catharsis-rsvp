@@ -195,22 +195,28 @@ export default function Home() {
     <>
       <style>{`
         @media (max-width: 768px) {
-          .booking-layout { flex-direction: column !important; }
-          .booking-left { width: 100% !important; height: 280px !important; min-height: unset !important; }
-          .booking-right { width: 100% !important; padding: 32px 24px 60px !important; }
-          .logo-mobile { max-width: 200px !important; }
+          .booking-right { width: 100% !important; margin: 0 !important; padding: 32px 24px 60px !important; }
+          .logo-mobile { max-width: 180px !important; }
         }
       `}</style>
-      <main className="booking-layout" style={{ display: 'flex', minHeight: '100vh', background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #d9cfc6 70%, #c8bdb2 100%)' }}>
-        <div className="booking-left" style={{ width: '50%', minHeight: '100vh', flexShrink: 0, overflow: 'hidden' }}>
-          <img
-            src="/micah-peay-artwork.png"
-            alt="Where They Don't Make Roads — Micah Peay"
-            style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center center', display: 'block' }}
-          />
-        </div>
-
-        <div className="booking-right" style={{ width: '50%', padding: '48px 40px 60px', overflowY: 'auto' }}>
+      <main style={{
+        minHeight: '100vh',
+        backgroundImage: 'url(/micah-peay-artwork.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        display: 'flex',
+        alignItems: 'stretch',
+        justifyContent: 'flex-end',
+      }}>
+        <div className="booking-right" style={{
+          width: '50%',
+          minHeight: '100vh',
+          padding: '48px 40px 60px',
+          overflowY: 'auto',
+          background: 'rgba(245, 240, 235, 0.88)',
+          backdropFilter: 'blur(2px)',
+        }}>
           <div className="logo-mobile" style={{ maxWidth: '260px', marginBottom: '32px' }}>
             <LogoLockup width={260} />
           </div>
