@@ -211,9 +211,9 @@ export default function Home() {
         justifyContent: 'flex-end',
       }}>
         <div className="booking-right" style={{
-          width: '50%',
+          width: '42%',
           minHeight: '100vh',
-          padding: '48px 40px 60px',
+          padding: '48px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
@@ -228,7 +228,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ borderTop: '1px solid #c8bdb2', paddingTop: '20px', marginBottom: '24px' }}>
+          <div style={{ paddingTop: '4px', marginBottom: '24px' }}>
             <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.9, letterSpacing: '0.02em' }}>
               Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted.
             </p>
