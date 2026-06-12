@@ -28,21 +28,21 @@ function LogoLockup({ width = 480 }: { width?: number }) {
         alt="Catharsis"
         width={960}
         height={540}
-        style={{ width: '100%', height: 'auto', display: 'block' }}
+        style={{ width: '100%', height: 'auto', display: 'block', mixBlendMode: 'screen' as const }}
         priority
       />
       <div style={{
         position: 'absolute',
-        bottom: '12%',
-        right: '8%',
-        width: '28%',
+        bottom: '4%',
+        right: '6%',
+        width: '26%',
       }}>
         <Image
           src="/soundrooms.png"
           alt="Soundrooms"
           width={400}
           height={100}
-          style={{ width: '100%', height: 'auto', display: 'block' }}
+          style={{ width: '100%', height: 'auto', display: 'block', mixBlendMode: 'screen' as const }}
         />
       </div>
     </div>
@@ -152,13 +152,13 @@ export default function Home() {
               type="submit"
               style={{
                 background: 'transparent',
-                border: 'none',
-                color: '#444',
+                border: '1px solid #555',
+                color: '#aaa',
                 cursor: 'pointer',
-                fontSize: '10px',
-                letterSpacing: '0.2em',
-                marginTop: '24px',
-                padding: '8px',
+                fontSize: '13px',
+                letterSpacing: '0.25em',
+                marginTop: '28px',
+                padding: '14px 48px',
                 textTransform: 'uppercase',
               }}
             >
