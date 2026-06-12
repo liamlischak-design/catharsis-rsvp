@@ -201,7 +201,7 @@ export default function Home() {
       `}</style>
       <main style={{
         minHeight: '100vh',
-        backgroundImage: 'url(/micah-peay-v2.png)',
+        backgroundImage: 'url(/micah-peay-v3.png)',
         backgroundSize: 'contain',
         backgroundPosition: 'left center',
         backgroundColor: '#d9cfc6',
