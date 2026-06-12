@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 interface SlotAvailability {
   id: string
@@ -17,7 +18,12 @@ interface FormData {
   email: string
 }
 
+const CORRECT_PASSWORD = 'v1'
+
 export default function Home() {
+  const [unlocked, setUnlocked] = useState(false)
+  const [passwordInput, setPasswordInput] = useState('')
+  const [passwordError, setPasswordError] = useState(false)
   const [slots, setSlots] = useState<SlotAvailability[]>([])
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null)
   const [form, setForm] = useState<FormData>({ firstName: '', lastName: '', phone: '', email: '' })
@@ -27,8 +33,8 @@ export default function Home() {
   const [slotsLoading, setSlotsLoading] = useState(true)
 
   useEffect(() => {
-    fetchCapacity()
-  }, [])
+    if (unlocked) fetchCapacity()
+  }, [unlocked])
 
   async function fetchCapacity() {
     setSlotsLoading(true)
@@ -40,6 +46,17 @@ export default function Home() {
       console.error(e)
     } finally {
       setSlotsLoading(false)
+    }
+  }
+
+  function handlePasswordSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (passwordInput === CORRECT_PASSWORD) {
+      setUnlocked(true)
+      setPasswordError(false)
+    } else {
+      setPasswordError(true)
+      setPasswordInput('')
     }
   }
 
@@ -71,35 +88,96 @@ export default function Home() {
     }
   }
 
+  if (!unlocked) {
+    return (
+      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
+        <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
+          <div style={{ marginBottom: '16px' }}>
+            <Image src="/catharsis-logo.png" alt="Catharsis" width={480} height={270} style={{ width: '100%', height: 'auto' }} priority />
+          </div>
+          <div style={{ marginBottom: '48px' }}>
+            <Image src="/soundrooms.png" alt="Soundrooms" width={480} height={120} style={{ width: '60%', height: 'auto', margin: '0 auto' }} />
+          </div>
+          <form onSubmit={handlePasswordSubmit}>
+            <input
+              type="password"
+              placeholder="enter password"
+              value={passwordInput}
+              onChange={e => { setPasswordInput(e.target.value); setPasswordError(false) }}
+              autoFocus
+              style={{
+                background: 'transparent',
+                border: 'none',
+                borderBottom: `1px solid ${passwordError ? '#cc4444' : '#333'}`,
+                color: '#fff',
+                fontFamily: 'Cormorant Garamond, serif',
+                fontSize: '18px',
+                fontWeight: 300,
+                letterSpacing: '0.2em',
+                outline: 'none',
+                padding: '12px 0',
+                textAlign: 'center',
+                width: '100%',
+                marginBottom: '8px',
+              }}
+            />
+            {passwordError && (
+              <p style={{ fontSize: '11px', color: '#cc4444', letterSpacing: '0.1em', marginBottom: '8px' }}>incorrect</p>
+            )}
+            <button
+              type="submit"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#444',
+                cursor: 'pointer',
+                fontSize: '10px',
+                letterSpacing: '0.2em',
+                marginTop: '24px',
+                padding: '8px',
+                textTransform: 'uppercase',
+              }}
+            >
+              enter
+            </button>
+          </form>
+        </div>
+      </main>
+    )
+  }
+
   if (submitted) {
     return (
-      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px' }}>
+      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: '#000' }}>
         <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
-          <p style={{ fontSize: '11px', letterSpacing: '0.2em', color: '#888', marginBottom: '24px', textTransform: 'uppercase' }}>
-            Catharsis Soundrooms
-          </p>
-          <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#888', marginBottom: '8px', textTransform: 'uppercase' }}>
+          <div style={{ marginBottom: '4px' }}>
+            <Image src="/catharsis-logo.png" alt="Catharsis" width={320} height={180} style={{ width: '66%', height: 'auto', margin: '0 auto' }} />
+          </div>
+          <div style={{ marginBottom: '32px' }}>
+            <Image src="/soundrooms.png" alt="Soundrooms" width={320} height={80} style={{ width: '40%', height: 'auto', margin: '0 auto' }} />
+          </div>
+          <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#555', marginBottom: '8px', textTransform: 'uppercase' }}>
             You are confirmed
           </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: '42px', lineHeight: 1.1, marginBottom: '8px' }}>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: '38px', lineHeight: 1.1, marginBottom: '8px', color: '#fff' }}>
             Where They Don&apos;t<br />Make Roads
           </h1>
-          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#888', marginBottom: '40px' }}>Micah Peay</p>
-          <div style={{ borderTop: '1px solid #222', borderBottom: '1px solid #222', padding: '24px 0', marginBottom: '32px' }}>
+          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#555', marginBottom: '32px' }}>Micah Peay</p>
+          <div style={{ borderTop: '1px solid #1a1a1a', borderBottom: '1px solid #1a1a1a', padding: '24px 0', marginBottom: '28px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ fontSize: '11px', color: '#666', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Session</span>
-              <span style={{ fontSize: '14px' }}>{selectedSlot}, June 25th</span>
+              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Session</span>
+              <span style={{ fontSize: '14px', color: '#fff' }}>{selectedSlot}, June 25th</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ fontSize: '11px', color: '#666', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Location</span>
-              <span style={{ fontSize: '14px', textAlign: 'right' }}>2100 Zeno Pl<br />Venice, CA 90291</span>
+              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Location</span>
+              <span style={{ fontSize: '14px', color: '#fff', textAlign: 'right' }}>2100 Zeno Pl<br />Venice, CA 90291</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '11px', color: '#666', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Name</span>
-              <span style={{ fontSize: '14px' }}>{form.firstName} {form.lastName}</span>
+              <span style={{ fontSize: '11px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Name</span>
+              <span style={{ fontSize: '14px', color: '#fff' }}>{form.firstName} {form.lastName}</span>
             </div>
           </div>
-          <p style={{ fontSize: '12px', color: '#666', lineHeight: 1.9, letterSpacing: '0.04em' }}>
+          <p style={{ fontSize: '12px', color: '#555', lineHeight: 1.9, letterSpacing: '0.04em' }}>
             A confirmation has been sent to your phone.<br />
             Please arrive 10 minutes before your session.<br />
             To cancel, use the link in your confirmation text.
@@ -110,37 +188,46 @@ export default function Home() {
   }
 
   return (
-    <main style={{ minHeight: '100vh', padding: '60px 24px 80px' }}>
+    <main style={{ minHeight: '100vh', padding: '60px 24px 80px', background: '#000' }}>
       <div style={{ maxWidth: '560px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '56px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#666', marginBottom: '28px', textTransform: 'uppercase' }}>
-            Catharsis Soundrooms Presents
+        <div style={{ marginBottom: '48px', textAlign: 'center' }}>
+          <div style={{ marginBottom: '4px' }}>
+            <Image src="/catharsis-logo.png" alt="Catharsis" width={560} height={315} style={{ width: '100%', height: 'auto' }} priority />
+          </div>
+          <div>
+            <Image src="/soundrooms.png" alt="Soundrooms" width={560} height={140} style={{ width: '55%', height: 'auto', margin: '0 auto' }} />
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '48px' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#444', marginBottom: '16px', textTransform: 'uppercase', textAlign: 'center' }}>
+            Presents
           </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(36px, 8vw, 56px)', lineHeight: 1.05, marginBottom: '10px' }}>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 300, fontSize: 'clamp(32px, 7vw, 50px)', lineHeight: 1.05, marginBottom: '10px', color: '#fff', textAlign: 'center' }}>
             Where They Don&apos;t<br />Make Roads
           </h1>
-          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '20px', color: '#888', marginBottom: '28px' }}>
+          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300, fontSize: '18px', color: '#555', marginBottom: '20px', textAlign: 'center' }}>
             Micah Peay
           </p>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: '12px', color: '#666', letterSpacing: '0.08em' }}>June 25th, 2026</span>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontSize: '12px', color: '#444', letterSpacing: '0.08em' }}>June 25th, 2026</span>
             <span style={{ color: '#333' }}>—</span>
-            <span style={{ fontSize: '12px', color: '#666', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</span>
+            <span style={{ fontSize: '12px', color: '#444', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</span>
           </div>
         </div>
 
         <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: '32px', marginBottom: '40px' }}>
-          <p style={{ fontSize: '13px', color: '#666', lineHeight: 1.9, letterSpacing: '0.02em' }}>
+          <p style={{ fontSize: '13px', color: '#555', lineHeight: 1.9, letterSpacing: '0.02em' }}>
             Come experience a new visual format for listening to recorded albums. Please arrive 10 minutes early before your scheduled session to ensure you don&apos;t miss a minute.
           </p>
         </div>
 
         <div style={{ marginBottom: '40px' }}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#555', marginBottom: '16px', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#444', marginBottom: '16px', textTransform: 'uppercase' }}>
             Select a session
           </p>
           {slotsLoading ? (
-            <p style={{ fontSize: '13px', color: '#555' }}>Loading availability...</p>
+            <p style={{ fontSize: '13px', color: '#444' }}>Loading availability...</p>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
               {slots.map(slot => {
@@ -154,7 +241,7 @@ export default function Home() {
                     disabled={isFull}
                     style={{
                       background: isSelected ? '#fff' : 'transparent',
-                      border: `1px solid ${isSelected ? '#fff' : isFull ? '#1a1a1a' : '#2a2a2a'}`,
+                      border: `1px solid ${isSelected ? '#fff' : isFull ? '#1a1a1a' : '#222'}`,
                       color: isSelected ? '#000' : isFull ? '#2a2a2a' : '#fff',
                       padding: '16px 8px',
                       textAlign: 'center',
@@ -165,7 +252,7 @@ export default function Home() {
                     <div style={{ fontSize: '14px', fontWeight: 400, marginBottom: '4px', letterSpacing: '0.05em' }}>
                       {slot.label}
                     </div>
-                    <div style={{ fontSize: '10px', letterSpacing: '0.1em', color: isSelected ? '#555' : isFull ? '#2a2a2a' : isAlmostFull ? '#888' : '#444', textTransform: 'uppercase' }}>
+                    <div style={{ fontSize: '10px', letterSpacing: '0.1em', color: isSelected ? '#555' : isFull ? '#2a2a2a' : isAlmostFull ? '#666' : '#444', textTransform: 'uppercase' }}>
                       {isFull ? 'Full' : isAlmostFull ? `${slot.available} left` : 'Available'}
                     </div>
                   </button>
@@ -176,7 +263,7 @@ export default function Home() {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#555', marginBottom: '16px', textTransform: 'uppercase' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#444', marginBottom: '16px', textTransform: 'uppercase' }}>
             Your information
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
@@ -199,7 +286,7 @@ export default function Home() {
             disabled={loading || !selectedSlot}
             style={{
               background: selectedSlot && !loading ? '#fff' : '#0a0a0a',
-              border: `1px solid ${selectedSlot && !loading ? '#fff' : '#222'}`,
+              border: `1px solid ${selectedSlot && !loading ? '#fff' : '#1a1a1a'}`,
               color: selectedSlot && !loading ? '#000' : '#333',
               fontSize: '11px',
               fontWeight: 500,
@@ -213,15 +300,15 @@ export default function Home() {
             {loading ? 'Reserving...' : 'Reserve My Spot'}
           </button>
 
-          <p style={{ fontSize: '11px', color: '#444', marginTop: '16px', lineHeight: 1.8, letterSpacing: '0.03em' }}>
+          <p style={{ fontSize: '11px', color: '#333', marginTop: '16px', lineHeight: 1.8, letterSpacing: '0.03em' }}>
             By reserving, you consent to receive SMS confirmation and reminders for this event.
             Msg &amp; data rates may apply. Reply STOP to opt out.
           </p>
         </form>
 
         <div style={{ borderTop: '1px solid #111', marginTop: '60px', paddingTop: '24px', display: 'flex', gap: '24px' }}>
-          <a href="/privacy" style={{ fontSize: '10px', color: '#444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
-          <a href="/terms" style={{ fontSize: '10px', color: '#444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
+          <a href="/privacy" style={{ fontSize: '10px', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
+          <a href="/terms" style={{ fontSize: '10px', color: '#333', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
         </div>
       </div>
     </main>
