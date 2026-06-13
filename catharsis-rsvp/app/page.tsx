@@ -199,14 +199,18 @@ export default function Home() {
             flex-direction: column !important;
             background-image: none !important;
             background-color: #dfd6cd !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            min-height: unset !important;
           }
           .mobile-hero {
             display: block !important;
+            width: 100% !important;
           }
           .booking-right {
             width: 100% !important;
             min-height: unset !important;
-            padding: 36px 24px 60px !important;
+            padding: 32px 24px 60px !important;
             background: transparent !important;
           }
           .desktop-only {
@@ -238,17 +242,21 @@ export default function Home() {
           />
           <div style={{
             position: 'absolute',
-            top: '28%',
+            top: '22%',
             left: 0,
             right: 0,
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '4px',
+            justifyContent: 'center',
+            gap: '6px',
+            textAlign: 'center',
           }}>
-            <LogoLockup width={220} />
-            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Presents</p>
+            <div style={{ width: '60%', margin: '0 auto' }}>
+              <LogoLockup width={220} />
+            </div>
+            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0, textAlign: 'center', width: '100%' }}>Presents</p>
           </div>
         </div>
         <div className="booking-right" style={{
