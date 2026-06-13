@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 
 interface SlotAvailability {
   id: string
@@ -43,10 +42,16 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
   const [slotsLoading, setSlotsLoading] = useState(true)
+  const [heroVisible, setHeroVisible] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    if (unlocked) fetchCapacity()
+    if (unlocked) {
+      fetchCapacity()
+      // Trigger staggered hero animation shortly after unlock
+      const t = setTimeout(() => setHeroVisible(true), 100)
+      return () => clearTimeout(t)
+    }
   }, [unlocked])
 
   async function fetchCapacity() {
@@ -195,6 +200,24 @@ export default function Home() {
   return (
     <>
       <style>{`
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); opacity: 0.5; }
+          50% { transform: translateY(6px); opacity: 1; }
+        }
+        .scroll-arrow { animation: bounce 1.6s ease-in-out infinite; }
+
+        .hero-logo    { opacity: 0; }
+        .hero-presents { opacity: 0; }
+        .hero-arrow   { opacity: 0; }
+
+        .hero-logo.visible     { animation: fadeUp 0.7s ease forwards; animation-delay: 0.1s; }
+        .hero-presents.visible { animation: fadeUp 0.7s ease forwards; animation-delay: 0.45s; }
+        .hero-arrow.visible    { animation: fadeUp 0.7s ease forwards; animation-delay: 0.75s; }
+
         @media (max-width: 768px) {
           html, body { overflow-x: hidden; }
           .booking-layout {
@@ -227,6 +250,7 @@ export default function Home() {
           .desktop-only { display: flex !important; }
         }
       `}</style>
+
       <main className="booking-layout" style={{
         minHeight: '100vh',
         backgroundImage: 'url(/micah-peay-v5.png)',
@@ -238,65 +262,78 @@ export default function Home() {
         alignItems: 'stretch',
         justifyContent: 'flex-end',
       }}>
-        {/* Mobile hero image with logo overlay */}
+
+        {/* Mobile hero — SVG image with staggered overlay animation */}
         <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
           <img
-            src="/micah-peay-mobile.png"
+            src="/micah-peay-mobile.svg"
             alt="Where They Don't Make Roads — Micah Peay"
             style={{ width: '100%', display: 'block' }}
           />
-          <div style={{
-            position: 'absolute',
-            top: '15%',
-            left: '-2%',
-            width: '72%',
-            zIndex: 10,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
+
+          {/* Catharsis logo */}
+          <div
+            className={`hero-logo${heroVisible ? ' visible' : ''}`}
+            style={{
+              position: 'absolute',
+              top: '15%',
+              left: '-2%',
+              width: '72%',
+              zIndex: 10,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             <div style={{ width: '100%' }}>
-              <LogoLockup width={650} />
+              <LogoLockup width={683} />
             </div>
           </div>
-          <p style={{
-            position: 'absolute',
-            top: '36.2%',
-            left: '-2%',
-            width: '72%',
-            zIndex: 10,
-            fontSize: '10px',
-            letterSpacing: '0.25em',
-            color: '#6b5f55',
-            textTransform: 'uppercase',
-            fontFamily: 'Inter, sans-serif',
-            margin: 0,
-            textAlign: 'center',
-          }}>Presents</p>
-          <div style={{
-            position: 'absolute',
-            bottom: '4%',
-            left: 0,
-            right: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-          }}>
+
+          {/* Presents */}
+          <p
+            className={`hero-presents${heroVisible ? ' visible' : ''}`}
+            style={{
+              position: 'absolute',
+              top: '34%',
+              left: '-2%',
+              width: '72%',
+              zIndex: 10,
+              fontSize: '10px',
+              letterSpacing: '0.25em',
+              color: '#6b5f55',
+              textTransform: 'uppercase',
+              fontFamily: 'Inter, sans-serif',
+              margin: 0,
+              textAlign: 'center',
+            }}
+          >
+            Presents
+          </p>
+
+          {/* Scroll arrow */}
+          <div
+            className={`hero-arrow${heroVisible ? ' visible' : ''}`}
+            style={{
+              position: 'absolute',
+              bottom: '4%',
+              left: 0,
+              right: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '6px',
+              zIndex: 10,
+            }}
+          >
             <p style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Reserve</p>
-            <style>{`
-              @keyframes bounce {
-                0%, 100% { transform: translateY(0); opacity: 0.5; }
-                50% { transform: translateY(6px); opacity: 1; }
-              }
-              .scroll-arrow { animation: bounce 1.6s ease-in-out infinite; }
-            `}</style>
             <svg className="scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="#6b5f55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
         </div>
+
+        {/* Booking panel */}
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
