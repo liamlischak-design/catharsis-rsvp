@@ -212,11 +212,13 @@ export default function Home() {
 
         .hero-logo    { opacity: 0; }
         .hero-presents { opacity: 0; }
+        .hero-image   { opacity: 0; }
         .hero-arrow   { opacity: 0; }
 
         .hero-logo.visible     { animation: fadeUp 0.7s ease forwards; animation-delay: 0.1s; }
         .hero-presents.visible { animation: fadeUp 0.7s ease forwards; animation-delay: 0.45s; }
-        .hero-arrow.visible    { animation: fadeUp 0.7s ease forwards; animation-delay: 0.75s; }
+        .hero-image.visible    { animation: fadeUp 0.9s ease forwards; animation-delay: 0.8s; }
+        .hero-arrow.visible    { animation: fadeUp 0.7s ease forwards; animation-delay: 1.4s; }
 
         @media (max-width: 768px) {
           html, body { overflow-x: hidden; }
@@ -266,6 +268,7 @@ export default function Home() {
         {/* Mobile hero — SVG image with staggered overlay animation */}
         <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
           <img
+            className={`hero-image${heroVisible ? ' visible' : ''}`}
             src="/micah-peay-mobile.png"
             alt="Where They Don't Make Roads — Micah Peay"
             style={{ width: '100%', display: 'block' }}
@@ -295,7 +298,7 @@ export default function Home() {
             className={`hero-presents${heroVisible ? ' visible' : ''}`}
             style={{
               position: 'absolute',
-              top: '34%',
+              top: '35.5%',
               left: '-2%',
               width: '72%',
               zIndex: 10,
