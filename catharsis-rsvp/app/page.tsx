@@ -249,7 +249,7 @@ export default function Home() {
             position: 'absolute',
             top: '15%',
             left: '3.6%',
-            width: '60%',
+            width: '69%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
