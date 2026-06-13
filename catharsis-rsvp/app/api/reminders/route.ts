@@ -96,8 +96,9 @@ function buildReminderEmail(
           </tr>
 
           <tr>
-            <td style="padding-top:24px;border-top:1px solid #c8bdb2;text-align:center;">
-              <a href="${cancelUrl}" style="font-size:11px;letter-spacing:0.15em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Cancel my reservation</a>
+            <td style="padding:28px;border:1px solid #c8bdb2;text-align:center;margin-top:32px;">
+              <p style="margin:0 0 16px;font-size:13px;color:#8a7d74;line-height:1.8;font-family:Georgia,serif;">If you need to cancel your reservation, please let us know so we can give it to someone on our waitlist! Space is limited.</p>
+              <a href="${cancelUrl}" style="display:inline-block;padding:12px 32px;border:1px solid #8a7d74;font-size:11px;letter-spacing:0.2em;color:#5a4e45;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Cancel my reservation</a>
             </td>
           </tr>
 
@@ -275,8 +276,8 @@ export async function GET(req: NextRequest) {
 
       const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL}/cancel?token=${rsvp.cancel_token}`
 
-      // 2-day reminder: between 47h and 49h before slot
-      if (hoursUntilSlot >= 47 && hoursUntilSlot < 49) {
+      // 1-day reminder: fires at 10am PT June 24th (32-36h before all sessions)
+      if (hoursUntilSlot >= 32 && hoursUntilSlot < 36) {
         await sendEmail(
           rsvp.email,
           `Tomorrow — ${rsvp.time_slot}, June 25th`,
