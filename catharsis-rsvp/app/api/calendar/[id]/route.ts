@@ -4,15 +4,16 @@ import { EVENT } from '@/lib/constants'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const supabaseAdmin = getSupabaseAdmin()
 
     const { data: rsvp, error } = await supabaseAdmin
       .from('rsvps')
       .select('first_name, last_name, time_slot, cancelled')
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
 
     if (error || !rsvp) {
@@ -35,7 +36,7 @@ export async function GET(
     const endHour = hour + Math.floor((minute + 30) / 60)
     const endMinute = (minute + 30) % 60
 
-    const uid = `${params.id}@catharsissoundrooms.com`
+    const uid = `${id}@catharsissoundrooms.com`
 
     const ics = [
       'BEGIN:VCALENDAR',
