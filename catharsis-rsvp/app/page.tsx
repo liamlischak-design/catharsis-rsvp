@@ -261,7 +261,7 @@ export default function Home() {
           </div>
           <p style={{
             position: 'absolute',
-            top: '38.5%',
+            top: '37.5%',
             left: '-2%',
             width: '72%',
             zIndex: 10,
