@@ -105,7 +105,7 @@ function buildConfirmationEmail(
           <!-- Title -->
           <tr>
             <td style="padding:40px 0 32px;text-align:center;">
-              <h1 style="margin:0 0 8px;font-size:32px;font-weight:300;font-style:italic;color:#2a2a2a;line-height:1.15;font-family:Georgia,serif;">Where They Don&rsquo;t Make Roads</h1>
+              <h1 style="margin:0 0 8px;font-size:22px;font-weight:300;font-style:italic;color:#2a2a2a;line-height:1.15;font-family:Georgia,serif;white-space:nowrap;">Where They Don&rsquo;t Make Roads</h1>
               <p style="margin:0;font-size:14px;font-weight:300;color:#9a8d84;letter-spacing:0.08em;font-family:Georgia,serif;font-style:italic;">A New Album by <span style="font-weight:700;font-style:normal;color:#7a6e66;">Micah Peay</span></p>
             </td>
           </tr>
