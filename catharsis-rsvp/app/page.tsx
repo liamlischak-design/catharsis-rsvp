@@ -37,6 +37,11 @@ export default function Home() {
   const [passwordError, setPasswordError] = useState(false)
   const [slots, setSlots] = useState<SlotAvailability[]>([])
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null)
+  const [waitlistSlot, setWaitlistSlot] = useState<string | null>(null)
+  const [waitlistForm, setWaitlistForm] = useState<{ firstName: string; lastName: string; email: string }>({ firstName: '', lastName: '', email: '' })
+  const [waitlistLoading, setWaitlistLoading] = useState(false)
+  const [waitlistSubmitted, setWaitlistSubmitted] = useState(false)
+  const [waitlistError, setWaitlistError] = useState('')
   const [form, setForm] = useState<FormData>({ firstName: '', lastName: '', phone: '', email: '' })
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -75,6 +80,34 @@ export default function Home() {
     } else {
       setPasswordError(true)
       setPasswordInput('')
+    }
+  }
+
+  async function handleWaitlist(e: React.FormEvent) {
+    e.preventDefault()
+    if (!waitlistSlot) return
+    if (!waitlistForm.firstName || !waitlistForm.lastName || !waitlistForm.email) {
+      setWaitlistError('Please fill in all fields.')
+      return
+    }
+    setWaitlistLoading(true)
+    setWaitlistError('')
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...waitlistForm, timeSlot: waitlistSlot }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setWaitlistError(data.error || 'Something went wrong.')
+      } else {
+        setWaitlistSubmitted(true)
+      }
+    } catch (e) {
+      setWaitlistError('Something went wrong. Please try again.')
+    } finally {
+      setWaitlistLoading(false)
     }
   }
 
@@ -374,23 +407,30 @@ export default function Home() {
                   return (
                     <button
                       key={slot.id}
-                      onClick={() => !isFull && setSelectedSlot(slot.id)}
-                      disabled={isFull}
+                      onClick={() => {
+                        if (isFull) {
+                          setWaitlistSlot(slot.id)
+                          setSelectedSlot(null)
+                        } else {
+                          setSelectedSlot(slot.id)
+                          setWaitlistSlot(null)
+                        }
+                      }}
                       style={{
-                        background: isSelected ? '#2a2a2a' : 'transparent',
-                        border: `1px solid ${isSelected ? '#2a2a2a' : isFull ? '#d8d0c8' : '#8a7d74'}`,
-                        color: isSelected ? '#f5f0eb' : isFull ? '#c8bdb2' : '#2a2a2a',
+                        background: isSelected ? '#2a2a2a' : waitlistSlot === slot.id ? '#f5f0eb' : 'transparent',
+                        border: `1px solid ${isSelected ? '#2a2a2a' : waitlistSlot === slot.id ? '#8a7d74' : isFull ? '#c8bdb2' : '#8a7d74'}`,
+                        color: isSelected ? '#f5f0eb' : isFull ? '#8a7d74' : '#2a2a2a',
                         padding: '12px 6px',
                         textAlign: 'center',
-                        cursor: isFull ? 'not-allowed' : 'pointer',
+                        cursor: 'pointer',
                         transition: 'all 0.15s',
                       }}
                     >
                       <div style={{ fontSize: '13px', fontWeight: 400, marginBottom: '3px', letterSpacing: '0.05em' }}>
                         {slot.label}
                       </div>
-                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : isFull ? '#d8d0c8' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
-                        {isFull ? 'Full' : isAlmostFull ? `${slot.available} left` : 'Available'}
+                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : isFull ? '#8a7d74' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
+                        {isFull ? 'Waitlist' : isAlmostFull ? `${slot.available} left` : 'Available'}
                       </div>
                     </button>
                   )
@@ -398,6 +438,34 @@ export default function Home() {
               </div>
             )}
           </div>
+
+          {/* Waitlist form */}
+          {waitlistSlot && !waitlistSubmitted && (
+            <div style={{ marginBottom: '24px', padding: '20px', border: '1px solid #c8bdb2', background: 'rgba(255,255,255,0.3)' }}>
+              <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#8a7d74', marginBottom: '4px', textTransform: 'uppercase' }}>Join the waitlist</p>
+              <p style={{ fontSize: '12px', color: '#7a6e66', marginBottom: '16px', lineHeight: 1.6 }}>We'll email you if a spot opens up. You'll have 2 hours to claim it.</p>
+              <form onSubmit={handleWaitlist}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '6px' }}>
+                  <input type="text" placeholder="First name" value={waitlistForm.firstName} onChange={e => setWaitlistForm({ ...waitlistForm, firstName: e.target.value })} required />
+                  <input type="text" placeholder="Last name" value={waitlistForm.lastName} onChange={e => setWaitlistForm({ ...waitlistForm, lastName: e.target.value })} required />
+                </div>
+                <div style={{ marginBottom: '16px' }}>
+                  <input type="email" placeholder="Email address" value={waitlistForm.email} onChange={e => setWaitlistForm({ ...waitlistForm, email: e.target.value })} required />
+                </div>
+                {waitlistError && <p style={{ fontSize: '12px', color: '#cc4444', marginBottom: '12px' }}>{waitlistError}</p>}
+                <button type="submit" disabled={waitlistLoading} style={{ background: 'transparent', border: '1px solid #8a7d74', color: '#5a4e45', fontSize: '11px', letterSpacing: '0.15em', padding: '12px 24px', textTransform: 'uppercase', width: '100%', cursor: 'pointer' }}>
+                  {waitlistLoading ? 'Joining...' : 'Join Waitlist'}
+                </button>
+              </form>
+            </div>
+          )}
+
+          {waitlistSlot && waitlistSubmitted && (
+            <div style={{ marginBottom: '24px', padding: '20px', border: '1px solid #c8bdb2', textAlign: 'center' }}>
+              <p style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#7a6e66', textTransform: 'uppercase', marginBottom: '8px' }}>You're on the waitlist</p>
+              <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.8 }}>We'll email you if a spot opens up for the {waitlistSlot} session.</p>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit}>
             <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#8a7d74', marginBottom: '12px', textTransform: 'uppercase' }}>
