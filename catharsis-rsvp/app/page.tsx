@@ -248,19 +248,31 @@ export default function Home() {
           <div style={{
             position: 'absolute',
             top: '15%',
-            left: '3.6%',
-            width: '69%',
+            left: '0%',
+            width: '72%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '8px',
           }}>
             <div style={{ width: '100%' }}>
               <LogoLockup width={650} />
             </div>
-            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '8px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
+          <p style={{
+            position: 'absolute',
+            top: '38.5%',
+            left: '0%',
+            width: '72%',
+            zIndex: 10,
+            fontSize: '10px',
+            letterSpacing: '0.25em',
+            color: '#6b5f55',
+            textTransform: 'uppercase',
+            fontFamily: 'Inter, sans-serif',
+            margin: 0,
+            textAlign: 'center',
+          }}>Presents</p>
           <div style={{
             position: 'absolute',
             bottom: '4%',
