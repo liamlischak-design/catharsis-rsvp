@@ -18,8 +18,7 @@ async function sendEmail(to: string, subject: string, html: string) {
 }
 
 function buildCalendarLinks(timeSlot: string) {
-  // Event is June 25, 2026 in Los Angeles (UTC-7 in summer)
-  const dateStr = '2026-06-25'
+  // Event is June 25, 2026 in Los Angeles (PT = UTC-7 in June)
   const [time, period] = timeSlot.split(' ')
   const [hourStr, minuteStr] = time.split(':')
   let hour = parseInt(hourStr)
@@ -27,36 +26,44 @@ function buildCalendarLinks(timeSlot: string) {
   if (period === 'PM' && hour !== 12) hour += 12
   if (period === 'AM' && hour === 12) hour = 0
 
-  // Format as UTC (LA is UTC-7 in June)
+  // UTC times (PT is UTC-7)
   const utcHour = hour + 7
-  const startUtc = `${dateStr.replace(/-/g, '')}T${String(utcHour).padStart(2, '0')}${String(minute).padStart(2, '0')}00Z`
-  // Session is ~25 minutes, pad to 30
-  const endHour = utcHour + (minute + 30 >= 60 ? 1 : 0)
-  const endMinute = (minute + 30) % 60
-  const endUtc = `${dateStr.replace(/-/g, '')}T${String(endHour).padStart(2, '0')}${String(endMinute).padStart(2, '0')}00Z`
+  const endTotalMinutes = minute + 30
+  const endHour = utcHour + Math.floor(endTotalMinutes / 60)
+  const endMinute = endTotalMinutes % 60
 
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const startUtc = `20260625T${pad(utcHour)}${pad(minute)}00Z`
+  const endUtc = `20260625T${pad(endHour)}${pad(endMinute)}00Z`
+
+  // For Google Calendar
   const title = encodeURIComponent(`${EVENT.name} — ${EVENT.presenter}`)
   const details = encodeURIComponent(`An immersive listening experience by ${EVENT.artist}`)
   const location = encodeURIComponent(EVENT.address)
-
   const google = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startUtc}/${endUtc}&details=${details}&location=${location}`
 
+  // For Apple Calendar — ICS with timezone
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `DTSTART:${startUtc}`,
-    `DTEND:${endUtc}`,
+    `DTSTART;TZID=America/Los_Angeles:20260625T${pad(hour)}${pad(minute)}00`,
+    `DTEND;TZID=America/Los_Angeles:20260625T${pad(hour + Math.floor(endTotalMinutes / 60))}${pad(endTotalMinutes % 60)}00`,
     `SUMMARY:${EVENT.name} — ${EVENT.presenter}`,
     `DESCRIPTION:An immersive listening experience by ${EVENT.artist}`,
     `LOCATION:${EVENT.address}`,
     'END:VEVENT',
     'END:VCALENDAR',
-  ].join('\n')
+  ].join('\r\n')
 
   const icsDataUri = `data:text/calendar;charset=utf8,${encodeURIComponent(ics)}`
 
-  const outlook = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${new Date(`2026-06-25T${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}:00-07:00`).toISOString()}&enddt=${new Date(`2026-06-25T${String(hour).padStart(2,'0')}:${String((minute + 30) % 60).padStart(2,'0')}:00-07:00`).toISOString()}&location=${location}&body=${details}`
+  // For Outlook
+  const startIso = new Date(`2026-06-25T${pad(hour)}:${pad(minute)}:00-07:00`).toISOString()
+  const endIso = new Date(`2026-06-25T${pad(hour + Math.floor(endTotalMinutes / 60))}:${pad(endTotalMinutes % 60)}:00-07:00`).toISOString()
+  const outlook = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${startIso}&enddt=${endIso}&location=${location}&body=${details}`
 
   return { google, ics: icsDataUri, outlook }
 }
@@ -84,16 +91,16 @@ function buildConfirmationEmail(
           <!-- Header -->
           <tr>
             <td style="padding-bottom:40px;text-align:center;border-bottom:1px solid #c8bdb2;">
-              <p style="margin:0 0 4px;font-size:10px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms</p>
-              <p style="margin:0;font-size:10px;letter-spacing:0.15em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Presents</p>
+              <p style="margin:0 0 20px;font-size:15px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms</p>
+              <p style="margin:0;font-size:15px;letter-spacing:0.15em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Presents</p>
             </td>
           </tr>
 
           <!-- Title -->
           <tr>
             <td style="padding:40px 0 32px;text-align:center;">
-              <h1 style="margin:0 0 8px;font-size:32px;font-weight:300;font-style:italic;color:#2a2a2a;line-height:1.15;font-family:Georgia,serif;">Where They Don&rsquo;t<br/>Make Roads</h1>
-              <p style="margin:0;font-size:16px;font-weight:300;color:#7a6e66;font-family:Georgia,serif;">Micah Peay</p>
+              <h1 style="margin:0 0 8px;font-size:32px;font-weight:300;font-style:italic;color:#2a2a2a;line-height:1.15;font-family:Georgia,serif;">Where They Don&rsquo;t Make Roads</h1>
+              <p style="margin:0;font-size:14px;font-weight:300;color:#9a8d84;letter-spacing:0.08em;font-family:Georgia,serif;font-style:italic;">A New Album by <span style="font-weight:700;font-style:normal;color:#7a6e66;">Micah Peay</span></p>
             </td>
           </tr>
 
@@ -142,18 +149,18 @@ function buildConfirmationEmail(
 
           <!-- Add to Calendar -->
           <tr>
-            <td style="padding-bottom:40px;text-align:center;">
-              <p style="margin:0 0 16px;font-size:10px;letter-spacing:0.2em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Add to calendar</p>
+            <td style="padding:28px 0;text-align:center;background:#2a2a2a;">
+              <p style="margin:0 0 20px;font-size:11px;letter-spacing:0.2em;color:#c8bdb2;text-transform:uppercase;font-family:Georgia,serif;">Add to your calendar</p>
               <table cellpadding="0" cellspacing="0" style="margin:0 auto;">
                 <tr>
                   <td style="padding:0 6px;">
-                    <a href="${cal.google}" target="_blank" style="display:inline-block;padding:10px 20px;border:1px solid #8a7d74;font-size:11px;letter-spacing:0.15em;color:#5a4e45;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Google</a>
+                    <a href="${cal.google}" target="_blank" style="display:inline-block;padding:12px 22px;border:1px solid #c8bdb2;font-size:11px;letter-spacing:0.15em;color:#f5f0eb;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Google</a>
                   </td>
                   <td style="padding:0 6px;">
-                    <a href="${cal.ics}" target="_blank" style="display:inline-block;padding:10px 20px;border:1px solid #8a7d74;font-size:11px;letter-spacing:0.15em;color:#5a4e45;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Apple</a>
+                    <a href="${cal.ics}" target="_blank" style="display:inline-block;padding:12px 22px;border:1px solid #c8bdb2;font-size:11px;letter-spacing:0.15em;color:#f5f0eb;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Apple</a>
                   </td>
                   <td style="padding:0 6px;">
-                    <a href="${cal.outlook}" target="_blank" style="display:inline-block;padding:10px 20px;border:1px solid #8a7d74;font-size:11px;letter-spacing:0.15em;color:#5a4e45;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Outlook</a>
+                    <a href="${cal.outlook}" target="_blank" style="display:inline-block;padding:12px 22px;border:1px solid #c8bdb2;font-size:11px;letter-spacing:0.15em;color:#f5f0eb;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Outlook</a>
                   </td>
                 </tr>
               </table>
@@ -162,12 +169,12 @@ function buildConfirmationEmail(
 
           <!-- Cancel -->
           <tr>
-            <td style="padding-top:32px;border-top:1px solid #c8bdb2;text-align:center;">
-              <p style="margin:0 0 12px;font-size:12px;color:#8a7d74;line-height:1.8;font-family:Georgia,serif;">
-                Need to cancel? Use the link below.<br/>
-                We ask that you do so as early as possible so others may attend.
+            <td style="padding:32px 28px;text-align:center;border:1px solid #c8bdb2;margin-top:32px;">
+              <p style="margin:0 0 6px;font-size:11px;letter-spacing:0.2em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">Need to cancel?</p>
+              <p style="margin:0 0 24px;font-size:13px;color:#8a7d74;line-height:1.8;font-family:Georgia,serif;">
+                Plans change — we understand. Please cancel as early as possible so someone on the waitlist can take your spot.
               </p>
-              <a href="${cancelUrl}" style="font-size:11px;letter-spacing:0.15em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Cancel my reservation</a>
+              <a href="${cancelUrl}" style="display:inline-block;padding:14px 36px;border:1px solid #8a7d74;font-size:11px;letter-spacing:0.2em;color:#5a4e45;text-decoration:none;text-transform:uppercase;font-family:Georgia,serif;">Cancel my reservation</a>
             </td>
           </tr>
 
