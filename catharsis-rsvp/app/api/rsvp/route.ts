@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSupabaseAdmin } from '@/lib/supabase'
 import { TIME_SLOTS, EVENT } from '@/lib/constants'
-import twilio from 'twilio'
 async function sendEmail(to: string, subject: string, html: string) {
   await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -311,20 +310,6 @@ export async function POST(req: NextRequest) {
     if (error) throw error
 
     const cancelUrl = `${process.env.NEXT_PUBLIC_APP_URL}/cancel?token=${data.cancel_token}`
-
-    // SMS confirmation
-    const twilioClient = twilio(
-      process.env.TWILIO_ACCOUNT_SID,
-      process.env.TWILIO_AUTH_TOKEN
-    )
-
-    const smsBody = `Catharsis Soundrooms invites you to Where They Don't Make Roads by Micah Peay — June 25th at ${timeSlot}. 2100 Zeno Pl, Venice. Arrive 10 min early 🖤\n\nTo cancel: ${cancelUrl}\n\nFor help, reply HELP. To opt-out, reply STOP. Msg & data rates may apply.`
-
-    await twilioClient.messages.create({
-      body: smsBody,
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: phone.startsWith('+') ? phone : `+1${phone.replace(/\D/g, '')}`,
-    })
 
     // Email confirmation
     await sendEmail(
