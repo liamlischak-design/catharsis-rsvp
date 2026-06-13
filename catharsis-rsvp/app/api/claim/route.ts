@@ -10,7 +10,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Catharsis Soundrooms <onboarding@resend.dev>',
+      from: 'Catharsis Soundrooms <hello@catharsissoundrooms.com>',
       to,
       subject,
       html,
