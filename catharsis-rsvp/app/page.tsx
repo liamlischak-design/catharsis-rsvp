@@ -261,6 +261,29 @@ export default function Home() {
             </div>
             <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '8px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
+          <div style={{
+            position: 'absolute',
+            bottom: '4%',
+            left: 0,
+            right: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+          }}>
+            <p style={{ fontSize: '9px', letterSpacing: '0.2em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Reserve</p>
+            <style>{`
+              @keyframes bounce {
+                0%, 100% { transform: translateY(0); opacity: 0.5; }
+                50% { transform: translateY(6px); opacity: 1; }
+              }
+              .scroll-arrow { animation: bounce 1.6s ease-in-out infinite; }
+            `}</style>
+            <svg className="scroll-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="#6b5f55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
         <div className="booking-right" style={{
           width: '42%',
