@@ -266,7 +266,7 @@ export default function Home() {
         {/* Mobile hero — SVG image with staggered overlay animation */}
         <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
           <img
-            src="/micah-peay-mobile.svg"
+            src="/micah-peay-mobile.png"
             alt="Where They Don't Make Roads — Micah Peay"
             style={{ width: '100%', display: 'block' }}
           />
