@@ -17,7 +17,7 @@ async function sendEmail(to: string, subject: string, html: string) {
   })
 }
 
-function buildCalendarLinks(timeSlot: string) {
+function buildCalendarLinks(timeSlot: string, rsvpId?: string) {
   // Event is June 25, 2026 in Los Angeles (PT = UTC-7 in June)
   const [time, period] = timeSlot.split(' ')
   const [hourStr, minuteStr] = time.split(':')
@@ -26,23 +26,27 @@ function buildCalendarLinks(timeSlot: string) {
   if (period === 'PM' && hour !== 12) hour += 12
   if (period === 'AM' && hour === 12) hour = 0
 
-  // UTC times (PT is UTC-7)
-  const utcHour = hour + 7
-  const endTotalMinutes = minute + 30
-  const endHour = utcHour + Math.floor(endTotalMinutes / 60)
-  const endMinute = endTotalMinutes % 60
-
   const pad = (n: number) => String(n).padStart(2, '0')
-  const startUtc = `20260625T${pad(utcHour)}${pad(minute)}00Z`
-  const endUtc = `20260625T${pad(endHour)}${pad(endMinute)}00Z`
 
-  // For Google Calendar
+  // Use JS Date to handle UTC conversion correctly (handles midnight rollover)
+  const startLocal = new Date(`2026-06-25T${pad(hour)}:${pad(minute)}:00-07:00`)
+  const endLocal = new Date(startLocal.getTime() + 30 * 60 * 1000)
+
+  // Google Calendar format: YYYYMMDDTHHmmssZ
+  const toGCal = (d: Date) => d.toISOString().replace(/[-:]/g, '').replace('.000', '')
+  const startUtc = toGCal(startLocal)
+  const endUtc = toGCal(endLocal)
+
   const title = encodeURIComponent(`${EVENT.name} — ${EVENT.presenter}`)
   const details = encodeURIComponent(`An immersive listening experience by ${EVENT.artist}`)
   const location = encodeURIComponent(EVENT.address)
+
+  // Google Calendar
   const google = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startUtc}/${endUtc}&details=${details}&location=${location}`
 
-  // For Apple Calendar — ICS with timezone
+  // Apple Calendar — ICS with local timezone
+  const endHour = hour + Math.floor((minute + 30) / 60)
+  const endMinute = (minute + 30) % 60
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -50,7 +54,7 @@ function buildCalendarLinks(timeSlot: string) {
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
     `DTSTART;TZID=America/Los_Angeles:20260625T${pad(hour)}${pad(minute)}00`,
-    `DTEND;TZID=America/Los_Angeles:20260625T${pad(hour + Math.floor(endTotalMinutes / 60))}${pad(endTotalMinutes % 60)}00`,
+    `DTEND;TZID=America/Los_Angeles:20260625T${pad(endHour)}${pad(endMinute)}00`,
     `SUMMARY:${EVENT.name} — ${EVENT.presenter}`,
     `DESCRIPTION:An immersive listening experience by ${EVENT.artist}`,
     `LOCATION:${EVENT.address}`,
@@ -58,22 +62,24 @@ function buildCalendarLinks(timeSlot: string) {
     'END:VCALENDAR',
   ].join('\r\n')
 
-  const icsDataUri = `data:text/calendar;charset=utf8,${encodeURIComponent(ics)}`
+  // Apple Calendar — use real hosted ICS endpoint if we have an rsvpId
+  const appleUrl = rsvpId
+    ? `${process.env.NEXT_PUBLIC_APP_URL}/api/calendar/${rsvpId}`
+    : `data:text/calendar;charset=utf8,${encodeURIComponent(ics)}`
 
-  // For Outlook
-  const startIso = new Date(`2026-06-25T${pad(hour)}:${pad(minute)}:00-07:00`).toISOString()
-  const endIso = new Date(`2026-06-25T${pad(hour + Math.floor(endTotalMinutes / 60))}:${pad(endTotalMinutes % 60)}:00-07:00`).toISOString()
-  const outlook = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${startIso}&enddt=${endIso}&location=${location}&body=${details}`
+  // Outlook
+  const outlook = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${startLocal.toISOString()}&enddt=${endLocal.toISOString()}&location=${location}&body=${details}`
 
-  return { google, ics: icsDataUri, outlook }
+  return { google, ics: appleUrl, outlook }
 }
 
 function buildConfirmationEmail(
   firstName: string,
   timeSlot: string,
   cancelUrl: string,
+  rsvpId: string,
 ) {
-  const cal = buildCalendarLinks(timeSlot)
+  const cal = buildCalendarLinks(timeSlot, rsvpId)
 
   return `<!DOCTYPE html>
 <html>
@@ -322,7 +328,7 @@ export async function POST(req: NextRequest) {
     await sendEmail(
       email,
       `You're confirmed — ${timeSlot}, June 25th`,
-      buildConfirmationEmail(firstName, timeSlot, cancelUrl),
+      buildConfirmationEmail(firstName, timeSlot, cancelUrl, data.id),
     )
 
     return NextResponse.json({ success: true, rsvpId: data.id })
