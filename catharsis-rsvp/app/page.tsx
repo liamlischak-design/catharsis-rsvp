@@ -248,8 +248,8 @@ export default function Home() {
           <div style={{
             position: 'absolute',
             top: '15%',
-            left: '5%',
-            width: '71%',
+            left: '3.6%',
+            width: '60%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
