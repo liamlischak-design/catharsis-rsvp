@@ -45,6 +45,7 @@ export default function Home() {
   const [slotsLoading, setSlotsLoading] = useState(true)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (unlocked) fetchCapacity()
   }, [unlocked])
 
@@ -195,6 +196,7 @@ export default function Home() {
     <>
       <style>{`
         @media (max-width: 768px) {
+          html, body { overflow-x: hidden; }
           .booking-layout {
             flex-direction: column !important;
             background-image: none !important;
@@ -202,6 +204,7 @@ export default function Home() {
             align-items: flex-start !important;
             justify-content: flex-start !important;
             min-height: unset !important;
+            height: auto !important;
           }
           .mobile-hero {
             display: block !important;
@@ -210,8 +213,10 @@ export default function Home() {
           .booking-right {
             width: 100% !important;
             min-height: unset !important;
+            height: auto !important;
             padding: 32px 24px 60px !important;
             background: transparent !important;
+            position: static !important;
           }
           .desktop-only {
             display: none !important;
@@ -242,21 +247,17 @@ export default function Home() {
           />
           <div style={{
             position: 'absolute',
-            top: '22%',
-            left: 0,
-            right: 0,
+            top: '20%',
+            left: '5%',
+            width: '55%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            gap: '6px',
-            textAlign: 'center',
+            gap: '2px',
           }}>
-            <div style={{ width: '60%', margin: '0 auto' }}>
-              <LogoLockup width={220} />
-            </div>
-            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0, textAlign: 'center', width: '100%' }}>Presents</p>
+            <LogoLockup width={280} />
+            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '2px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
         </div>
         <div className="booking-right" style={{
