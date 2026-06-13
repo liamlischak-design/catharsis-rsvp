@@ -258,7 +258,7 @@ export default function Home() {
           .booking-layout {
             flex-direction: column !important;
             background-image: none !important;
-            background-color: #dfd6cd !important;
+            background-color: #cec3b8 !important;
             align-items: flex-start !important;
             justify-content: flex-start !important;
             min-height: unset !important;
@@ -291,7 +291,7 @@ export default function Home() {
         backgroundImage: 'url(/micah-peay-v5.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'left top',
-        backgroundColor: '#dfd6cd',
+        backgroundColor: '#cec3b8',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
         alignItems: 'stretch',
