@@ -229,24 +229,27 @@ export default function Home() {
         alignItems: 'stretch',
         justifyContent: 'flex-end',
       }}>
-        {/* Mobile hero image with logo above */}
-        <div className="mobile-hero" style={{ display: 'none', width: '100%' }}>
-          <div style={{
-            background: '#dfd6cd',
-            padding: '36px 24px 16px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-          }}>
-            <LogoLockup width={260} />
-            <p style={{ fontSize: '11px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif' }}>Presents</p>
-          </div>
+        {/* Mobile hero image with logo overlay */}
+        <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
           <img
             src="/micah-peay-mobile.png"
             alt="Where They Don't Make Roads — Micah Peay"
             style={{ width: '100%', display: 'block' }}
           />
+          <div style={{
+            position: 'absolute',
+            top: '28%',
+            left: 0,
+            right: 0,
+            zIndex: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '4px',
+          }}>
+            <LogoLockup width={220} />
+            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Presents</p>
+          </div>
         </div>
         <div className="booking-right" style={{
           width: '42%',
