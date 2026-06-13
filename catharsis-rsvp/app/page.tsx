@@ -229,10 +229,11 @@ export default function Home() {
         alignItems: 'stretch',
         justifyContent: 'flex-end',
       }}>
-        {/* Mobile hero image with logo overlay */}
-        <div className="mobile-hero" style={{ display: 'none', position: 'relative', width: '100%' }}>
-          <div style={{ position: 'absolute', top: '6%', left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
+        {/* Mobile hero image with logo above */}
+        <div className="mobile-hero" style={{ display: 'none', width: '100%' }}>
+          <div style={{ padding: '36px 24px 8px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <LogoLockup width={280} />
+            <p style={{ fontSize: '11px', letterSpacing: '0.25em', color: '#8a7d74', textTransform: 'uppercase' }}>Presents</p>
           </div>
           <img
             src="/micah-peay-mobile.png"
