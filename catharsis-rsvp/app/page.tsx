@@ -249,7 +249,7 @@ export default function Home() {
             position: 'absolute',
             top: '15%',
             left: '5%',
-            width: '55%',
+            width: '71%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
@@ -257,7 +257,7 @@ export default function Home() {
             gap: '8px',
           }}>
             <div style={{ width: '100%' }}>
-              <LogoLockup width={500} />
+              <LogoLockup width={650} />
             </div>
             <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '8px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
