@@ -306,6 +306,17 @@ export default function Home() {
             alt="Where They Don't Make Roads — Micah Peay"
             style={{ width: '100%', display: 'block' }}
           />
+          {/* Dark overlay */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.18) 100%)',
+            zIndex: 5,
+            pointerEvents: 'none',
+          }} />
 
           {/* Catharsis logo */}
           <div
@@ -322,7 +333,7 @@ export default function Home() {
             }}
           >
             <div style={{ width: '100%' }}>
-              <LogoLockup width={753} />
+              <LogoLockup width={828} />
             </div>
           </div>
 
