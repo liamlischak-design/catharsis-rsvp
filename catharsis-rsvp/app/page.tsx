@@ -256,7 +256,9 @@ export default function Home() {
             alignItems: 'center',
             gap: '8px',
           }}>
-            <LogoLockup width={340} />
+            <div style={{ width: '100%' }}>
+              <LogoLockup width={500} />
+            </div>
             <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '8px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
         </div>
