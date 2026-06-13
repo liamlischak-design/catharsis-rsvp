@@ -389,17 +389,20 @@ export default function Home() {
           background: 'transparent',
         }}>
           <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
-            <LogoLockup width={360} />
+            <LogoLockup width={468} />
           </div>
 
           <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-            <p style={{ fontSize: '14px', color: '#8a7d74', letterSpacing: '0.08em', marginBottom: '4px' }}>June 25th, 2026 @ Satellite</p>
-            <p style={{ fontSize: '14px', color: '#8a7d74', letterSpacing: '0.08em' }}>2100 Zeno Pl, Venice</p>
+            <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', marginBottom: '4px' }}>June 25th, 2026 @ Satellite</p>
+            <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em' }}>2100 Zeno Pl, Venice</p>
           </div>
 
           <div style={{ marginBottom: '24px' }}>
             <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em' }}>
-              Step inside the album and experience music like never before. Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted. Each album listening session runs approximately 25 minutes.
+              Catharsis Soundrooms at Satellite invites you to step inside the new album by Micah Peay and experience music like never before.
+            </p>
+            <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em', marginTop: '12px' }}>
+              Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted. Each album listening session runs approximately 25 minutes. Non-alcoholic refreshments will be served after each session.
             </p>
           </div>
 
