@@ -46,3 +46,4 @@ Edit `.env.local`:
 Confirmation SMS sends automatically on RSVP.
 
 For day-before and day-of reminders, visit /admin, export the list, and send manually from your Twilio console — or ask Claude to build a reminder script.
+
