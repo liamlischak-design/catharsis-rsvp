@@ -247,17 +247,17 @@ export default function Home() {
           />
           <div style={{
             position: 'absolute',
-            top: '20%',
+            top: '15%',
             left: '5%',
             width: '55%',
             zIndex: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '2px',
+            gap: '8px',
           }}>
-            <LogoLockup width={280} />
-            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '2px 0 0 0', textAlign: 'center' }}>Presents</p>
+            <LogoLockup width={340} />
+            <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: '8px 0 0 0', textAlign: 'center' }}>Presents</p>
           </div>
         </div>
         <div className="booking-right" style={{
