@@ -143,8 +143,8 @@ export default function Home() {
     return (
       <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: 'radial-gradient(ellipse at center, #ede4da 0%, #ddd3c9 35%, #cec3b8 70%, #bdb0a4 100%)' }}>
         <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
-          <LogoLockup width={860} />
-          <form onSubmit={handlePasswordSubmit} style={{ marginTop: '32px' }}>
+          <LogoLockup width={876} />
+          <form onSubmit={handlePasswordSubmit} style={{ marginTop: '20px' }}>
             <input
               type="password"
               placeholder="enter password"
