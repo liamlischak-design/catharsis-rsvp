@@ -29,8 +29,9 @@ function parseSlotToUtc(timeSlot: string): Date {
   const minute = parseInt(minuteStr)
   if (period === 'PM' && hour !== 12) hour += 12
   if (period === 'AM' && hour === 12) hour = 0
-  // June 25, 2026 PT = UTC-7
-  return new Date(`2026-06-25T${String(hour + 7).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00Z`)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  // Use -07:00 offset so JS handles the midnight UTC rollover correctly
+  return new Date(`2026-06-25T${pad(hour)}:${pad(minute)}:00-07:00`)
 }
 
 function buildReminderEmail(
@@ -285,8 +286,8 @@ export async function GET(req: NextRequest) {
         )
         results.twoDaysSent++
       }
-      // 12-hour reminder: between 11.5h and 12.5h before slot
-      else if (hoursUntilSlot >= 11.5 && hoursUntilSlot < 12.5) {
+      // Day-of reminder: fires at 10am PT June 25th (8-12.5h before all sessions)
+      else if (hoursUntilSlot >= 8 && hoursUntilSlot < 12.5) {
         await sendEmail(
           rsvp.email,
           `Tonight — ${rsvp.time_slot}, June 25th`,
