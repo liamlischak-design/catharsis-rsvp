@@ -280,7 +280,7 @@ export default function Home() {
             style={{
               position: 'absolute',
               top: '15%',
-              left: '-5%',
+              left: '-3%',
               width: '72%',
               zIndex: 10,
               display: 'flex',
@@ -289,7 +289,7 @@ export default function Home() {
             }}
           >
             <div style={{ width: '100%' }}>
-              <LogoLockup width={717} />
+              <LogoLockup width={753} />
             </div>
           </div>
 
@@ -319,7 +319,7 @@ export default function Home() {
             className={`hero-arrow${heroVisible ? ' visible' : ''}`}
             style={{
               position: 'absolute',
-              bottom: '18%',
+              bottom: '5%',
               left: 0,
               right: 0,
               display: 'flex',
@@ -329,7 +329,7 @@ export default function Home() {
               zIndex: 10,
             }}
           >
-            <p style={{ fontSize: '13px', letterSpacing: '0.2em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Reserve</p>
+            <p style={{ fontSize: '13px', letterSpacing: '0.2em', color: '#6b5f55', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', margin: 0 }}>Reserve Now</p>
             <svg className="scroll-arrow" width="28" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="#6b5f55" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
