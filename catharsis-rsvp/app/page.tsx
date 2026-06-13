@@ -399,7 +399,7 @@ export default function Home() {
 
           <div style={{ marginBottom: '24px' }}>
             <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em' }}>
-              Catharsis Soundrooms at Satellite invites you to step inside the new album by Micah Peay and experience music like never before.
+              Catharsis Soundrooms invites you to step inside the new album by Micah Peay and experience music like never before.
             </p>
             <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em', marginTop: '12px' }}>
               Please arrive 10 minutes before your scheduled session time to ensure entry. Once started, the album experience cannot be interrupted. Each album listening session runs approximately 25 minutes. Non-alcoholic refreshments will be served after each session.
