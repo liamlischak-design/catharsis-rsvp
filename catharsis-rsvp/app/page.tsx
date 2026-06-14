@@ -221,9 +221,9 @@ export default function Home() {
             </div>
           </div>
           <p style={{ fontSize: '12px', color: '#7a6e66', lineHeight: 1.9, letterSpacing: '0.04em' }}>
-            A confirmation has been sent to your phone.<br />
+            A confirmation has been sent to your email.<br />
             Please arrive 10 minutes before your session.<br />
-            To cancel, use the link in your confirmation text.
+            To cancel, use the link in your confirmation email.
           </p>
         </div>
       </main>
