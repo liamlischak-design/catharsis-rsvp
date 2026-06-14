@@ -384,20 +384,20 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '12px 32px 60px',
+          padding: '0px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
             <LogoLockup width={515} />
           </div>
 
-          <div style={{ marginTop: '40px', marginBottom: '40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', marginBottom: '4px', textAlign: 'center' }}>June 25th, 2026 @ Satellite</p>
             <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', textAlign: 'center' }}>2100 Zeno Pl, Venice</p>
           </div>
 
-          <div style={{ marginBottom: '24px' }}>
+          <div style={{ marginBottom: '16px' }}>
             <p style={{ fontSize: '14px', color: '#5a5048', lineHeight: 1.8, letterSpacing: '0.02em' }}>
               Catharsis Soundrooms invites you to step inside the new album by Micah Peay and experience music like never before.
             </p>
@@ -406,7 +406,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ marginBottom: '24px' }}>
+          <div style={{ marginBottom: '16px' }}>
             <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#8a7d74', marginBottom: '12px', textTransform: 'uppercase' }}>
               Select a session
             </p>
