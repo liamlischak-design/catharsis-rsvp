@@ -234,24 +234,24 @@ export default function Home() {
     <>
       <style>{`
         @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(12px); }
+          from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes bounce {
           0%, 100% { transform: translateY(0); opacity: 0.5; }
           50% { transform: translateY(6px); opacity: 1; }
         }
-        .scroll-arrow { animation: bounce 1.6s ease-in-out infinite; }
+        .scroll-arrow { animation: bounce 2.4s ease-in-out infinite; }
 
         .hero-logo    { opacity: 0; }
         .hero-presents { opacity: 0; }
         .hero-image   { opacity: 0; }
         .hero-arrow   { opacity: 0; }
 
-        .hero-logo.visible     { animation: fadeUp 0.7s ease forwards; animation-delay: 0.1s; }
-        .hero-presents.visible { animation: fadeUp 0.7s ease forwards; animation-delay: 0.45s; }
-        .hero-image.visible    { animation: fadeUp 0.9s ease forwards; animation-delay: 0.8s; }
-        .hero-arrow.visible    { animation: fadeUp 0.7s ease forwards; animation-delay: 1.4s; }
+        .hero-logo.visible     { animation: fadeUp 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; animation-delay: 0.3s; }
+        .hero-presents.visible { animation: fadeUp 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; animation-delay: 1.4s; }
+        .hero-image.visible    { animation: fadeUp 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; animation-delay: 2.4s; }
+        .hero-arrow.visible    { animation: fadeUp 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; animation-delay: 3.8s; }
 
         @media (max-width: 768px) {
           html, body { overflow-x: hidden; }
