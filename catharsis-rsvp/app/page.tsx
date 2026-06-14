@@ -294,7 +294,7 @@ export default function Home() {
         backgroundColor: '#dfd6cd',
         backgroundRepeat: 'no-repeat',
         display: 'flex',
-        alignItems: 'stretch',
+        alignItems: 'flex-start',
         justifyContent: 'flex-end',
       }}>
 
@@ -384,7 +384,7 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '20px 32px 60px',
+          padding: '12px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
