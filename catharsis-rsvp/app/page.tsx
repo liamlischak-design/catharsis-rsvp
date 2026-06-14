@@ -388,11 +388,11 @@ export default function Home() {
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
             <LogoLockup width={515} />
           </div>
 
-          <div style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ marginTop: '0px', marginBottom: '16px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', marginBottom: '4px', textAlign: 'center' }}>June 25th, 2026 @ Satellite</p>
             <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', textAlign: 'center' }}>2100 Zeno Pl, Venice</p>
           </div>
