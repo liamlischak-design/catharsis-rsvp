@@ -296,6 +296,7 @@ export default function Home() {
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
+        paddingTop: '0',
       }}>
 
         {/* Mobile hero — SVG image with staggered overlay animation */}
@@ -384,7 +385,7 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '120px 32px 60px',
+          padding: '20px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
