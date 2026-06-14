@@ -388,7 +388,7 @@ export default function Home() {
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginTop: '-60px', marginBottom: '16px' }}>
             <LogoLockup width={515} />
           </div>
 
