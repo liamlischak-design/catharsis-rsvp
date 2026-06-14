@@ -384,12 +384,12 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '40px 32px 60px',
+          padding: '20px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
-          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
-            <LogoLockup width={468} />
+          <div className="desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
+            <LogoLockup width={515} />
           </div>
 
           <div style={{ marginBottom: '20px', textAlign: 'center' }}>
