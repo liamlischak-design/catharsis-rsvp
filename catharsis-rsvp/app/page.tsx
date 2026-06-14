@@ -141,7 +141,7 @@ export default function Home() {
 
   if (!unlocked) {
     return (
-      <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: 'radial-gradient(ellipse at center, #faf7f4 0%, #ede4da 25%, #dfd6cd 55%, #c8bdb2 80%, #b8aa9e 100%)' }}>
+      <main style={{ height: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 24px', background: 'radial-gradient(ellipse at center, #e8dfd6 0%, #ddd3c9 25%, #d0c5ba 55%, #c0b3a8 80%, #b0a296 100%)' }}>
         <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
           <LogoLockup width={876} />
           <form onSubmit={handlePasswordSubmit} style={{ marginTop: '20px' }}>
@@ -194,7 +194,7 @@ export default function Home() {
 
   if (submitted) {
     return (
-      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: 'radial-gradient(ellipse at center, #faf7f4 0%, #ede4da 25%, #dfd6cd 55%, #c8bdb2 80%, #b8aa9e 100%)' }}>
+      <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px', background: 'radial-gradient(ellipse at center, #e8dfd6 0%, #ddd3c9 25%, #d0c5ba 55%, #c0b3a8 80%, #b0a296 100%)' }}>
         <div style={{ maxWidth: '480px', width: '100%', textAlign: 'center' }}>
           <div style={{ marginBottom: '32px' }}>
             <LogoLockup width={320} />
