@@ -358,7 +358,7 @@ export default function Home() {
             className={`hero-presents${heroVisible ? ' visible' : ''}`}
             style={{
               position: 'absolute',
-              top: '30.5%',
+              top: '33.5%',
               left: '-2%',
               width: '72%',
               zIndex: 10,
