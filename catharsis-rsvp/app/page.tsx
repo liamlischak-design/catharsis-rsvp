@@ -400,7 +400,7 @@ export default function Home() {
         <div className="booking-right" style={{
           width: '42%',
           minHeight: '100vh',
-          padding: '30px 32px 60px',
+          padding: '25px 32px 60px',
           overflowY: 'auto',
           background: 'transparent',
         }}>
