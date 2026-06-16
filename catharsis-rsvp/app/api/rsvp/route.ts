@@ -97,7 +97,7 @@ function buildConfirmationEmail(
           <!-- Header -->
           <tr>
             <td style="padding-bottom:40px;text-align:center;border-bottom:1px solid #c8bdb2;">
-              <p style="margin:0 0 20px;font-size:15px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms</p>
+              <p style="margin:0 0 20px;font-size:15px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms at Satellite One</p>
               <p style="margin:0;font-size:15px;letter-spacing:0.15em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Presents</p>
             </td>
           </tr>
@@ -198,7 +198,7 @@ function buildReminderEmail(
   cancelUrl: string,
   isClose: boolean,
 ) {
-  const timing = isClose ? 'Your session is in 12 hours' : 'Your session is tomorrow'
+  const timing = isClose ? 'Your session is this evening' : 'Your session is tomorrow'
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -214,7 +214,7 @@ function buildReminderEmail(
 
           <tr>
             <td style="padding-bottom:32px;text-align:center;border-bottom:1px solid #c8bdb2;">
-              <p style="margin:0;font-size:10px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms</p>
+              <p style="margin:0;font-size:10px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms at Satellite One</p>
             </td>
           </tr>
 
