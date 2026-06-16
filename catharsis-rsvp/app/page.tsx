@@ -409,7 +409,7 @@ export default function Home() {
           </div>
 
           <div className={`desk-date${heroVisible ? ' visible' : ''}`} style={{ marginTop: '0px', marginBottom: '16px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', marginBottom: '4px', textAlign: 'center' }}>June 25th, 2026 @ Satellite</p>
+            <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', marginBottom: '4px', textAlign: 'center' }}>June 25th, 2026 @ Satellite One</p>
             <p style={{ fontSize: '16px', fontWeight: 600, color: '#5a5048', letterSpacing: '0.06em', textAlign: 'center' }}>2100 Zeno Pl, Venice</p>
           </div>
 
