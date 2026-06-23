@@ -461,7 +461,7 @@ export default function Home() {
                       <div style={{ fontSize: '13px', fontWeight: 400, marginBottom: '3px', letterSpacing: '0.05em' }}>
                         {slot.label}
                       </div>
-                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : (isFull && slot.waitlistFull) ? '#d8d0c8' : isFull ? '#8a7d74' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : (isFull && slot.waitlistFull) ? '#9a8d84' : isFull ? '#8a7d74' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
                         {isFull && slot.waitlistFull ? 'Full' : isFull ? 'Waitlist' : isAlmostFull ? `${slot.available} left` : 'Available'}
                       </div>
                     </button>
