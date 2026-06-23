@@ -38,7 +38,7 @@ export async function GET() {
       capacity: slot.capacity,
       booked: counts[slot.id] ?? 0,
       available: slot.capacity - (counts[slot.id] ?? 0),
-      waitlistFull: (waitlistCounts[slot.id] ?? 0) >= 1,
+      waitlistFull: (waitlistCounts[slot.id] ?? 0) >= 2,
     }))
 
     return NextResponse.json(availability)
