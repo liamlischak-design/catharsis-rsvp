@@ -15,12 +15,21 @@ export async function GET() {
       throw error
     }
 
+    // Also fetch waitlist counts per slot
+    const { data: waitlistData } = await supabaseAdmin
+      .from('waitlist')
+      .select('time_slot')
+      .eq('cancelled', false)
+      .eq('claimed', false)
+
     const counts: Record<string, number> = {}
-    TIME_SLOTS.forEach(slot => { counts[slot.id] = 0 })
+    const waitlistCounts: Record<string, number> = {}
+    TIME_SLOTS.forEach(slot => { counts[slot.id] = 0; waitlistCounts[slot.id] = 0 })
     data?.forEach(row => {
-      if (counts[row.time_slot] !== undefined) {
-        counts[row.time_slot]++
-      }
+      if (counts[row.time_slot] !== undefined) counts[row.time_slot]++
+    })
+    waitlistData?.forEach(row => {
+      if (waitlistCounts[row.time_slot] !== undefined) waitlistCounts[row.time_slot]++
     })
 
     const availability = TIME_SLOTS.map(slot => ({
@@ -29,6 +38,7 @@ export async function GET() {
       capacity: slot.capacity,
       booked: counts[slot.id] ?? 0,
       available: slot.capacity - (counts[slot.id] ?? 0),
+      waitlistFull: (waitlistCounts[slot.id] ?? 0) >= 1,
     }))
 
     return NextResponse.json(availability)
