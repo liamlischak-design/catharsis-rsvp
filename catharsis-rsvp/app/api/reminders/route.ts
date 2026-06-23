@@ -57,13 +57,14 @@ function buildReminderEmail(
 
           <tr>
             <td style="padding-bottom:32px;text-align:center;border-bottom:1px solid #c8bdb2;">
-              <p style="margin:0;font-size:10px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms @ Satellite One</p>
+              <p style="margin:0 0 4px;font-size:11px;letter-spacing:0.25em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">Catharsis Soundrooms</p>
+              <p style="margin:0;font-size:11px;letter-spacing:0.2em;color:#8a7d74;text-transform:uppercase;font-family:Georgia,serif;">@ Satellite One</p>
             </td>
           </tr>
 
           <tr>
             <td style="padding:40px 0 16px;text-align:center;">
-              <p style="margin:0 0 24px;font-size:11px;letter-spacing:0.15em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">${timing}</p>
+              <p style="margin:0 0 24px;font-size:14px;letter-spacing:0.12em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">${timing}</p>
               <h1 style="margin:0 0 8px;font-size:28px;font-weight:300;font-style:italic;color:#2a2a2a;line-height:1.15;font-family:Georgia,serif;">Where They Don&rsquo;t<br/>Make Roads</h1>
               <p style="margin:0;font-size:13px;font-weight:300;color:#7a6e66;letter-spacing:0.08em;font-family:Georgia,serif;text-transform:uppercase;">Artist: Micah Peay</p>
             </td>
@@ -74,7 +75,7 @@ function buildReminderEmail(
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding-bottom:14px;">
-                    <span style="font-size:10px;letter-spacing:0.12em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">Album Experience</span>
+                    <span style="font-size:10px;letter-spacing:0.12em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">Time</span>
                     <span style="float:right;font-size:14px;color:#2a2a2a;font-family:Georgia,serif;">${timeSlot}, June 25th</span>
                   </td>
                 </tr>
@@ -89,12 +90,17 @@ function buildReminderEmail(
           </tr>
 
           <tr>
-            <td style="padding:32px 0;text-align:center;">
-              <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.15em;color:#2a2a2a;text-transform:uppercase;font-family:Georgia,serif;">Important Reminder</p>
-              <p style="margin:0;font-size:13px;color:#5a5048;line-height:1.9;font-family:Georgia,serif;">
-                Please arrive 10 minutes before your session, ${firstName}.<br/>
-                Once started, the experience cannot be interrupted.
-              </p>
+            <td style="padding:24px 0;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:20px 24px;border:1px solid #2a2a2a;background:#ffffff;text-align:center;">
+                    <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:0.15em;color:#2a2a2a;text-transform:uppercase;font-family:Georgia,serif;">Important Reminder</p>
+                    <p style="margin:0;font-size:13px;color:#2a2a2a;line-height:1.9;font-family:Georgia,serif;">
+                      Please arrive 10 minutes before your session, and allow time for street parking in the area. If you are late, the experience may begin without you and cannot be interrupted.
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
@@ -147,7 +153,7 @@ function buildCapacityWaitlistEmail(firstName: string, timeSlot: string, claimUr
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding-bottom:14px;">
-                    <span style="font-size:10px;letter-spacing:0.12em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">Album Experience</span>
+                    <span style="font-size:10px;letter-spacing:0.12em;color:#7a6e66;text-transform:uppercase;font-family:Georgia,serif;">Time</span>
                     <span style="float:right;font-size:14px;color:#2a2a2a;font-family:Georgia,serif;">\${timeSlot}, June 25th</span>
                   </td>
                 </tr>
@@ -283,7 +289,7 @@ export async function GET(req: NextRequest) {
       if (hoursUntilSlot >= 32 && hoursUntilSlot < 36) {
         await sendEmail(
           rsvp.email,
-          `Album Experience Tomorrow — ${rsvp.time_slot}, June 25th`,
+          `Album Experience Tomorrow @ ${rsvp.time_slot}, June 25th`,
           buildReminderEmail(rsvp.first_name, rsvp.time_slot, cancelUrl, false),
           [{ filename: 'MicahPeayAlbumExperience.png', path: 'https://catharsissoundrooms.com/MicahPeayAlbumExperience.png' }]
         )
@@ -293,7 +299,7 @@ export async function GET(req: NextRequest) {
       else if (hoursUntilSlot >= 8 && hoursUntilSlot < 12.5) {
         await sendEmail(
           rsvp.email,
-          `Album Experience Tonight — ${rsvp.time_slot}, June 25th`,
+          `Album Experience Tonight @ ${rsvp.time_slot}, June 25th`,
           buildReminderEmail(rsvp.first_name, rsvp.time_slot, cancelUrl, true),
           [{ filename: 'MicahPeayAlbumExperience.png', path: 'https://catharsissoundrooms.com/MicahPeayAlbumExperience.png' }]
         )
