@@ -8,6 +8,7 @@ interface SlotAvailability {
   capacity: number
   booked: number
   available: number
+  waitlistFull?: boolean
 }
 
 interface FormData {
@@ -438,29 +439,30 @@ export default function Home() {
                     <button
                       key={slot.id}
                       onClick={() => {
-                        if (isFull) {
+                        if (isFull && !slot.waitlistFull) {
                           setWaitlistSlot(slot.id)
                           setSelectedSlot(null)
-                        } else {
+                        } else if (!isFull) {
                           setSelectedSlot(slot.id)
                           setWaitlistSlot(null)
                         }
                       }}
+                      disabled={isFull && !!slot.waitlistFull}
                       style={{
                         background: isSelected ? '#2a2a2a' : waitlistSlot === slot.id ? '#f5f0eb' : 'transparent',
                         border: `1px solid ${isSelected ? '#2a2a2a' : waitlistSlot === slot.id ? '#8a7d74' : isFull ? '#c8bdb2' : '#8a7d74'}`,
-                        color: isSelected ? '#f5f0eb' : isFull ? '#8a7d74' : '#2a2a2a',
+                        color: isSelected ? '#f5f0eb' : (isFull && slot.waitlistFull) ? '#c8bdb2' : isFull ? '#8a7d74' : '#2a2a2a',
                         padding: '12px 6px',
                         textAlign: 'center',
-                        cursor: 'pointer',
+                        cursor: (isFull && !!slot.waitlistFull) ? 'not-allowed' : 'pointer',
                         transition: 'all 0.15s',
                       }}
                     >
                       <div style={{ fontSize: '13px', fontWeight: 400, marginBottom: '3px', letterSpacing: '0.05em' }}>
                         {slot.label}
                       </div>
-                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : isFull ? '#8a7d74' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
-                        {isFull ? 'Waitlist' : isAlmostFull ? `${slot.available} left` : 'Available'}
+                      <div style={{ fontSize: '9px', letterSpacing: '0.1em', color: isSelected ? '#c8bdb2' : (isFull && slot.waitlistFull) ? '#d8d0c8' : isFull ? '#8a7d74' : isAlmostFull ? '#8a7d74' : '#9a8d84', textTransform: 'uppercase' }}>
+                        {isFull && slot.waitlistFull ? 'Full' : isFull ? 'Waitlist' : isAlmostFull ? `${slot.available} left` : 'Available'}
                       </div>
                     </button>
                   )
