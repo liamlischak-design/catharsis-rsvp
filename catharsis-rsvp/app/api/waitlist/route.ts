@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
       .eq('cancelled', false)
       .eq('claimed', false)
 
-    if ((waitlistCount ?? 0) >= 1) {
+    if ((waitlistCount ?? 0) >= 2) {
       return NextResponse.json({ error: 'The waitlist for this session is full.' }, { status: 409 })
     }
 
