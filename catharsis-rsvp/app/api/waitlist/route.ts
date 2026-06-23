@@ -98,6 +98,18 @@ export async function POST(req: NextRequest) {
 
     const supabaseAdmin = getSupabaseAdmin()
 
+    // Check if waitlist is already full (cap: 1 per slot)
+    const { count: waitlistCount } = await supabaseAdmin
+      .from('waitlist')
+      .select('*', { count: 'exact', head: true })
+      .eq('time_slot', timeSlot)
+      .eq('cancelled', false)
+      .eq('claimed', false)
+
+    if ((waitlistCount ?? 0) >= 1) {
+      return NextResponse.json({ error: 'The waitlist for this session is full.' }, { status: 409 })
+    }
+
     // Check if this email is already on the waitlist for this slot
     const { data: existing } = await supabaseAdmin
       .from('waitlist')
