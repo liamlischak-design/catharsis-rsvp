@@ -41,7 +41,7 @@ function buildReminderEmail(
   cancelUrl: string,
   isClose: boolean,
 ) {
-  const timing = isClose ? 'Album Experience Tonight' : 'Album Experience Tomorrow'
+  const timing = isClose ? `Album Experience Tonight, ${firstName}!` : `Album Experience Tomorrow, ${firstName}!`
   return `<!DOCTYPE html>
 <html>
 <head>
