@@ -9,6 +9,7 @@ interface SlotAvailability {
   booked: number
   available: number
   waitlistFull?: boolean
+  hasActiveWaitlist?: boolean
 }
 
 interface FormData {
@@ -432,8 +433,8 @@ export default function Home() {
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
                 {slots.map(slot => {
-                  const isFull = slot.available === 0
-                  const isAlmostFull = slot.available <= 2 && slot.available > 0
+                  const isFull = slot.available === 0 || !!slot.hasActiveWaitlist
+                  const isAlmostFull = slot.available <= 2 && slot.available > 0 && !slot.hasActiveWaitlist
                   const isSelected = selectedSlot === slot.id
                   return (
                     <button
