@@ -106,9 +106,14 @@ function buildSurveyEmail(firstName: string) {
 }
 
 export async function GET(req: NextRequest) {
-  // Protect with CRON_SECRET
+  // Protect with CRON_SECRET via header or query param
   const authHeader = req.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  const { searchParams } = new URL(req.url)
+  const querySecret = searchParams.get('secret')
+  const isAuthorized =
+    authHeader === `Bearer ${process.env.CRON_SECRET}` ||
+    querySecret === process.env.CRON_SECRET
+  if (!isAuthorized) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
