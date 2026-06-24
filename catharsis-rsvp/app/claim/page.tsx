@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 function LogoLockup({ width = 320 }: { width?: number }) {
@@ -17,7 +17,16 @@ function LogoLockup({ width = 320 }: { width?: number }) {
 
 type ClaimState = 'loading' | 'success' | 'error' | 'expired' | 'already_claimed'
 
-export default function ClaimPage() {
+const bgStyle = {
+  minHeight: '100vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '40px 24px',
+  background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #dfd6cd 70%, #d0c8be 100%)',
+}
+
+function ClaimPageInner() {
   const searchParams = useSearchParams()
   const waitlistId = searchParams.get('waitlist_id')
 
@@ -58,15 +67,6 @@ export default function ClaimPage() {
 
     claim()
   }, [waitlistId])
-
-  const bgStyle = {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '40px 24px',
-    background: 'radial-gradient(ellipse at center, #f5f0eb 0%, #e8dfd6 35%, #dfd6cd 70%, #d0c8be 100%)',
-  }
 
   if (state === 'loading') {
     return (
@@ -175,5 +175,27 @@ export default function ClaimPage() {
         </p>
       </div>
     </main>
+  )
+}
+
+// Fallback shown while the Suspense boundary resolves useSearchParams
+function ClaimPageFallback() {
+  return (
+    <main style={bgStyle}>
+      <div style={{ textAlign: 'center' }}>
+        <LogoLockup width={280} />
+        <p style={{ marginTop: '32px', fontSize: '12px', letterSpacing: '0.2em', color: '#8a7d74', textTransform: 'uppercase', fontFamily: 'Georgia, serif' }}>
+          Confirming your spot...
+        </p>
+      </div>
+    </main>
+  )
+}
+
+export default function ClaimPage() {
+  return (
+    <Suspense fallback={<ClaimPageFallback />}>
+      <ClaimPageInner />
+    </Suspense>
   )
 }
