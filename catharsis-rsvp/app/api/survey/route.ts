@@ -1,6 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSupabaseAdmin } from '@/lib/supabase-admin'
-import { sendEmail } from '@/lib/resend'
+import { createClient } from '@supabase/supabase-js'
+
+function getSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  )
+}
+
+async function sendEmail(to: string, subject: string, html: string): Promise<boolean> {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: 'Catharsis Soundrooms <hello@catharsissoundrooms.com>',
+      to,
+      subject,
+      html,
+    }),
+  })
+  return res.ok
+}
 
 const SURVEY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScZJaX2yvXNO3akwFTPN4aCaQPE7rJbbwJ31wWytSLsG36jrg/viewform?usp=header'
 
@@ -91,7 +114,6 @@ function buildSurveyEmail(firstName: string): string {
 }
 
 export async function GET(req: NextRequest) {
-  // Allow trigger via ?secret= param (browser-friendly) or Authorization header
   const secretParam = req.nextUrl.searchParams.get('secret')
   const authHeader = req.headers.get('authorization')
 
@@ -125,7 +147,6 @@ export async function GET(req: NextRequest) {
     if (ok) results.sent++
     else results.failed++
 
-    // Small delay to avoid rate limiting
     await new Promise(resolve => setTimeout(resolve, 200))
   }
 
