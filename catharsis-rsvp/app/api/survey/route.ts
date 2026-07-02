@@ -130,10 +130,11 @@ export async function GET(req: NextRequest) {
 
   const supabaseAdmin = getSupabaseAdmin()
 
-  const { data: rsvps, error } = await supabaseAdmin
-    .from('rsvps')
-    .select('first_name, email')
-    .eq('cancelled', false)
+const { data: rsvps, error } = await supabaseAdmin
+  .from('rsvps')
+  .select('first_name, email')
+  .eq('cancelled', false)
+  .eq('email', 'liamlischak@gmail.com')
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
