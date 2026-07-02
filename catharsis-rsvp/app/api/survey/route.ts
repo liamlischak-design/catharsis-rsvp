@@ -25,7 +25,7 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
   return res.ok
 }
 
-const SURVEY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScZJaX2yvXNO3akwFTPN4aCaQPE7rJbbwJ31wWytSLsG36jrg/viewform?usp=header'
+const SURVEY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScZJaX2yvXNO3akwFTPN4aCaQPE7rJbbwJ31wWytSLsG36jrg/viewform'
 
 function buildSurveyEmail(firstName: string): string {
   return `<!DOCTYPE html>
@@ -35,15 +35,15 @@ function buildSurveyEmail(firstName: string): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A quick favor</title>
 </head>
-<body style="margin:0;padding:0;background-color:#f5f0eb;font-family:Georgia,serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0eb;padding:40px 0;">
+<body style="margin:0;padding:0;background-color:#d9cdbf;font-family:Georgia,serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#d9cdbf;padding:40px 0;">
     <tr>
       <td align="center">
-        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background-color:#f5f0eb;">
+        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background-color:#ede4d9;">
 
           <!-- Logo -->
           <tr>
-            <td align="center" style="padding-bottom:36px;">
+            <td align="center" style="padding:40px 32px 36px;">
               <img
                 src="https://catharsissoundrooms.com/catharsis-lockup.svg"
                 alt="Catharsis Soundrooms"
@@ -55,50 +55,53 @@ function buildSurveyEmail(firstName: string): string {
 
           <!-- Body -->
           <tr>
-            <td style="padding:0 24px;">
+            <td style="padding:0 32px;">
               <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
                 Hi ${firstName},
               </p>
               <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
-                We created something new last night and you were one of the first people to experience it. We'd love to know what you actually thought — what resonated, what didn't, what surprised you, and what you'd want to see done differently for the next one.
+                Last week you joined us for a new kind of album listening experience, showcasing <em>Where They Don't Make Roads</em> by Micah Peay. Thank you again for being part of v1.
               </p>
-              <p style="margin:0 0 32px;font-size:15px;line-height:1.8;color:#2a2a2a;">
-                Honest answers only. Takes 5 minutes.
+              <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+                If you haven't had the chance yet, I'd be grateful if you took 5 minutes to share your thoughts through our short survey. Your feedback will directly help shape v2.
               </p>
 
               <!-- CTA Button -->
-              <table cellpadding="0" cellspacing="0" style="margin:0 0 36px;">
+              <table cellpadding="0" cellspacing="0" align="center" style="margin:32px auto;">
                 <tr>
-                  <td align="center" style="background-color:#2a2a2a;padding:14px 32px;">
+                  <td align="center" style="background-color:#2a2a2a;padding:12px 32px;border-radius:2px;">
                     <a
                       href="${SURVEY_URL}"
-                      style="color:#f5f0eb;font-family:Georgia,serif;font-size:13px;letter-spacing:0.12em;text-decoration:none;text-transform:uppercase;"
+                      style="color:#ede4d9;font-family:Georgia,serif;font-size:14px;letter-spacing:0.05em;text-decoration:none;"
                     >
-                      Take the survey →
+                      Take the survey
                     </a>
                   </td>
                 </tr>
               </table>
 
-              <p style="margin:0 0 8px;font-size:15px;line-height:1.8;color:#2a2a2a;">
-                With gratitude,
+              <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+                And if you've already filled it out&hellip; thank you, truly.
               </p>
-              <p style="margin:0 0 36px;font-size:15px;line-height:1.8;color:#2a2a2a;">
-                Liam @ Catharsis Soundrooms
+              <p style="margin:0 0 8px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+                Happy Fourth!
+              </p>
+              <p style="margin:16px 0 36px;padding-left:24px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+                &ndash; Liam @ Catharsis Soundrooms
               </p>
             </td>
           </tr>
 
           <!-- Divider -->
           <tr>
-            <td style="padding:0 24px;">
-              <hr style="border:none;border-top:1px solid #c8bdb2;margin:0 0 24px;" />
+            <td style="padding:0 32px;">
+              <hr style="border:none;border-top:1px solid #b8a99a;margin:0 0 24px;" />
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="padding:0 24px 40px;">
+            <td style="padding:0 32px 40px;">
               <p style="margin:0;font-size:11px;line-height:1.8;color:#8a7d74;letter-spacing:0.04em;">
                 You attended the June 25th Catharsis Soundrooms experience at Satellite One, Venice.
               </p>
