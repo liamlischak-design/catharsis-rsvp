@@ -16,7 +16,8 @@ async function sendEmail(to: string, subject: string, html: string): Promise<boo
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Catharsis Soundrooms <hello@catharsissoundrooms.com>',
+      from: 'Liam <liam@catharsissoundrooms.com>',
+      reply_to: 'liamlischak@gmail.com',
       to,
       subject,
       html,
@@ -35,11 +36,11 @@ function buildSurveyEmail(firstName: string): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>One week ago...</title>
 </head>
-<body style="margin:0;padding:0;background-color:#d9cdbf;font-family:Georgia,serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#d9cdbf;padding:40px 0;">
+<body style="margin:0;padding:0;background-color:#f5f0eb;font-family:Georgia,serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f0eb;padding:40px 0;">
     <tr>
       <td align="center">
-        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background-color:#d9cdbf;">
+        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background-color:#f5f0eb;">
           <tr>
             <td style="padding:0 32px;">
               <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
@@ -54,8 +55,11 @@ function buildSurveyEmail(firstName: string): string {
               <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
                 <a href="${SURVEY_URL}" style="color:#2a2a2a;text-decoration:underline;">Take the survey</a>
               </p>
-              <p style="margin:0 0 24px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+              <p style="margin:0 0 20px;font-size:15px;line-height:1.8;color:#2a2a2a;">
                 And if you've already filled it out... thank you, truly.
+              </p>
+              <p style="margin:0 0 24px;font-size:15px;line-height:1.8;color:#2a2a2a;">
+                If the link gives you any trouble, please let me know!
               </p>
               <p style="margin:0;font-size:15px;line-height:1.8;color:#2a2a2a;">
                 Happy Fourth,<br />Liam
