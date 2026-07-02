@@ -92,7 +92,6 @@ export async function GET(req: NextRequest) {
     .from('rsvps')
     .select('first_name, email')
     .eq('cancelled', false)
-    .eq('email', 'liamlischak@gmail.com')
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
