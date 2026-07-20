@@ -152,6 +152,6 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 
 @media (max-width: 640px) {
   .gate-layout {
-    padding: 34vh 0 60px;
+    padding: 27vh 0 60px;
   }
 }
