@@ -50,10 +50,10 @@ export default function Home() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: '16vh 24px 60px',
+        padding: '22vh 0 60px',
       }}
     >
-      <div style={{ width: '100%', maxWidth: '720px' }}>
+      <div style={{ width: 'min(90vw, 720px)' }}>
         <LogoLockup width={720} />
       </div>
 
@@ -62,6 +62,7 @@ export default function Home() {
           marginTop: 'clamp(40px, 7vh, 80px)',
           width: '100%',
           maxWidth: '680px',
+          padding: '0 24px',
           textAlign: 'center',
         }}
       >
@@ -80,7 +81,7 @@ export default function Home() {
           <form onSubmit={handleSubmit}>
             <p
               style={{
-                fontSize: 'clamp(14px, 4vw, 18px)',
+                fontSize: 'clamp(12px, 3.2vw, 18px)',
                 letterSpacing: '0.08em',
                 color: '#5a4e45',
                 marginBottom: '20px',
