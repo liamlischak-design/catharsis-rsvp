@@ -123,7 +123,7 @@ export default function Home() {
               style={{
                 background: 'transparent',
                 border: '1px solid #8a7d74',
-                borderRadius: '999px 999px 22px 22px',
+                borderRadius: '999px 999px 40px 40px',
                 color: '#5a4e45',
                 cursor: status === 'loading' ? 'default' : 'pointer',
                 fontSize: '12px',
@@ -132,7 +132,7 @@ export default function Home() {
                 padding: '22px 30px 20px',
                 textTransform: 'uppercase',
                 opacity: status === 'loading' ? 0.6 : 1,
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
