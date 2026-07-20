@@ -43,18 +43,17 @@ export default function Home() {
 
   return (
     <main
-      className="turrell-field"
+      className="turrell-field gate-layout"
       style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: '22vh 0 60px',
       }}
     >
-      <div style={{ width: 'min(90vw, 720px)' }}>
-        <LogoLockup width={720} />
+      <div style={{ width: 'min(94vw, 760px)' }}>
+        <LogoLockup width={760} />
       </div>
 
       <div
@@ -124,7 +123,7 @@ export default function Home() {
               style={{
                 background: 'transparent',
                 border: '1px solid #8a7d74',
-                borderRadius: '999px',
+                borderRadius: '999px 999px 10px 10px',
                 color: '#5a4e45',
                 cursor: status === 'loading' ? 'default' : 'pointer',
                 fontSize: '12px',
