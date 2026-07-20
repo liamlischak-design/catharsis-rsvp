@@ -144,6 +144,24 @@ export default function Home() {
           </form>
         )}
       </div>
+
+      <div
+        style={{
+          borderTop: '1px solid #c8bdb2',
+          marginTop: '48px',
+          paddingTop: '20px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '24px',
+        }}
+      >
+        <span style={{ fontSize: '10px', color: '#9a8d84', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          &copy; {new Date().getFullYear()} Catharsis Soundrooms, LLC. All rights reserved.
+        </span>
+        <a href="/privacy" style={{ fontSize: '10px', color: '#9a8d84', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
+        <a href="/terms" style={{ fontSize: '10px', color: '#9a8d84', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
+      </div>
     </main>
   )
 }
