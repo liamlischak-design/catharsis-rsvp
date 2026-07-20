@@ -81,7 +81,7 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 
 .turrell-field {
   background: radial-gradient(
-    ellipse at 50% 34%,
+    ellipse at 50% 40%,
     var(--stop1) 0%,
     var(--stop2) 25%,
     var(--stop3) 55%,
