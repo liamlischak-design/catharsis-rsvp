@@ -45,7 +45,7 @@ export default function Home() {
     <main
       className="turrell-field gate-layout"
       style={{
-        minHeight: '100vh',
+        minHeight: '118vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
