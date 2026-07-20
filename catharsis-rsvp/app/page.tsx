@@ -45,21 +45,40 @@ export default function Home() {
     <main
       className="turrell-field"
       style={{
+        position: 'relative',
         height: '100vh',
         overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0 24px',
       }}
     >
-      <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
+      {/* Logo sits exactly at the gradient's center point (50%, 50%) */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 'min(80vw, 876px)',
+        }}
+      >
         <LogoLockup width={876} />
+      </div>
 
+      {/* Signup content is anchored a fixed distance below that same center point */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 'calc(50% + 96px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+          maxWidth: '680px',
+          padding: '0 24px',
+          textAlign: 'center',
+        }}
+      >
         {status === 'done' ? (
           <p
             style={{
-              marginTop: '36px',
               fontSize: '13px',
               letterSpacing: '0.2em',
               color: '#5a4e45',
@@ -69,16 +88,16 @@ export default function Home() {
             You&rsquo;re on the list.
           </p>
         ) : (
-          <form onSubmit={handleSubmit} style={{ marginTop: '36px' }}>
+          <form onSubmit={handleSubmit}>
             <p
               style={{
-                fontSize: '18px',
+                fontSize: 'clamp(14px, 4vw, 18px)',
                 letterSpacing: '0.08em',
                 color: '#5a4e45',
                 marginBottom: '20px',
               }}
             >
-              Sign up for the next Album Experience
+              Join the list for the next album experience
             </p>
             <input
               type="email"
@@ -110,10 +129,12 @@ export default function Home() {
             )}
             <button
               type="submit"
+              className="pulse-btn"
               disabled={status === 'loading'}
               style={{
                 background: 'transparent',
                 border: '1px solid #8a7d74',
+                borderRadius: '999px',
                 color: '#5a4e45',
                 cursor: status === 'loading' ? 'default' : 'pointer',
                 fontSize: '13px',
@@ -124,7 +145,7 @@ export default function Home() {
                 opacity: status === 'loading' ? 0.6 : 1,
               }}
             >
-              {status === 'loading' ? 'sending' : 'notify me'}
+              {status === 'loading' ? 'sending' : 'join the list'}
             </button>
           </form>
         )}
