@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -14,7 +12,6 @@
   --grey-light: #333333;
   --grey-mid: #555555;
 }
-
 html, body {
   background: var(--black);
   color: var(--white);
@@ -24,18 +21,15 @@ html, body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
-
 .display {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
 }
-
 .display-italic {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
 }
-
 input, textarea {
   background: transparent;
   border: 1px solid #8a7d74;
@@ -49,36 +43,29 @@ input, textarea {
   transition: border-color 0.2s;
   width: 100%;
 }
-
 input::placeholder {
   color: #a89e96;
 }
-
 input:focus {
   border-color: #2a2a2a;
 }
-
 button {
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   letter-spacing: 0.1em;
   transition: all 0.2s;
 }
-
 a {
   color: inherit;
   text-decoration: none;
 }
-
 hr { border: none; border-top: 1px solid #c8bdb2; }
 /* Add this to app/globals.css — animated color field for the gate page */
-
 @property --stop1 { syntax: '<color>'; inherits: false; initial-value: #e8dfd6; }
 @property --stop2 { syntax: '<color>'; inherits: false; initial-value: #ddd3c9; }
 @property --stop3 { syntax: '<color>'; inherits: false; initial-value: #d0c5ba; }
 @property --stop4 { syntax: '<color>'; inherits: false; initial-value: #c0b3a8; }
 @property --stop5 { syntax: '<color>'; inherits: false; initial-value: #b0a296; }
-
 .turrell-field {
   background: radial-gradient(
     ellipse at 50% 40%,
@@ -90,7 +77,6 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
   );
   animation: turrell-cycle 96s ease-in-out infinite;
 }
-
 @keyframes turrell-cycle {
   /* beige */
   0%, 100% {
@@ -125,28 +111,24 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     --stop1: #e8c0c0; --stop2: #dd9494; --stop3: #cc6060; --stop4: #b83838; --stop5: #992020;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .turrell-field {
     animation: none;
   }
 }
 /* Add this to app/globals.css — pulsing ring on the "join the list" button */
-
 .pulse-btn {
   position: relative;
 }
-
 .pulse-btn::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: 999px 999px 10px 10px;
   border: 1px solid #8a7d74;
   animation: pulse-ring 2.4s ease-out infinite;
   pointer-events: none;
 }
-
 @keyframes pulse-ring {
   0% {
     transform: scale(1);
@@ -157,10 +139,19 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     opacity: 0;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .pulse-btn::after {
     animation: none;
     display: none;
+  }
+}
+
+.gate-layout {
+  padding: 22vh 0 60px;
+}
+
+@media (max-width: 640px) {
+  .gate-layout {
+    padding: 34vh 0 60px;
   }
 }
