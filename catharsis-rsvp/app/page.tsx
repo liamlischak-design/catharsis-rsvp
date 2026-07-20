@@ -50,7 +50,7 @@ export default function Home() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: '11vh 24px 60px',
+        padding: '16vh 24px 60px',
       }}
     >
       <div style={{ width: '100%', maxWidth: '720px' }}>
@@ -126,10 +126,10 @@ export default function Home() {
                 borderRadius: '999px',
                 color: '#5a4e45',
                 cursor: status === 'loading' ? 'default' : 'pointer',
-                fontSize: '13px',
-                letterSpacing: '0.25em',
-                marginTop: '28px',
-                padding: '14px 48px',
+                fontSize: '12px',
+                letterSpacing: '0.16em',
+                marginTop: '44px',
+                padding: '22px 30px',
                 textTransform: 'uppercase',
                 opacity: status === 'loading' ? 0.6 : 1,
               }}
