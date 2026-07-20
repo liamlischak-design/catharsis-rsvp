@@ -45,34 +45,23 @@ export default function Home() {
     <main
       className="turrell-field"
       style={{
-        position: 'relative',
-        height: '100vh',
-        overflow: 'hidden',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        padding: '11vh 24px 60px',
       }}
     >
-      {/* Logo sits exactly at the gradient's center point (50%, 50%) */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 'min(80vw, 876px)',
-        }}
-      >
-        <LogoLockup width={876} />
+      <div style={{ width: '100%', maxWidth: '720px' }}>
+        <LogoLockup width={720} />
       </div>
 
-      {/* Signup content is anchored a fixed distance below that same center point */}
       <div
         style={{
-          position: 'absolute',
-          top: 'calc(50% + 96px)',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          marginTop: 'clamp(40px, 7vh, 80px)',
           width: '100%',
           maxWidth: '680px',
-          padding: '0 24px',
           textAlign: 'center',
         }}
       >
