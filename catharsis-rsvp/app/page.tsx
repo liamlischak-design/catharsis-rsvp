@@ -56,17 +56,6 @@ export default function Home() {
       <div style={{ maxWidth: '680px', width: '100%', textAlign: 'center' }}>
         <LogoLockup width={876} />
 
-        <p
-          className="display-italic"
-          style={{
-            fontSize: '22px',
-            color: '#5a4e45',
-            margin: '28px 0 0',
-          }}
-        >
-          Where music is felt&hellip; not just heard.
-        </p>
-
         {status === 'done' ? (
           <p
             style={{
@@ -83,13 +72,13 @@ export default function Home() {
           <form onSubmit={handleSubmit} style={{ marginTop: '36px' }}>
             <p
               style={{
-                fontSize: '13px',
-                letterSpacing: '0.15em',
+                fontSize: '18px',
+                letterSpacing: '0.08em',
                 color: '#5a4e45',
-                marginBottom: '16px',
+                marginBottom: '20px',
               }}
             >
-              Sign up to hear about the next Album Experience
+              Sign up for the next Album Experience
             </p>
             <input
               type="email"
