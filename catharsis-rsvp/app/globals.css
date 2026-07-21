@@ -124,7 +124,7 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 999px 999px 40px 40px;
+  border-radius: 50% 50% 40px 40px;
   border: 1px solid #ffffff;
   animation: pulse-ring 2.4s ease-out infinite;
   pointer-events: none;
