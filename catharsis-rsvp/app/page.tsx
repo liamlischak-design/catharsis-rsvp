@@ -123,7 +123,7 @@ export default function Home() {
               style={{
                 background: '#ffffff',
                 border: '1px solid #ffffff',
-                borderRadius: '999px 999px 40px 40px',
+                borderRadius: '50% 50% 40px 40px',
                 color: '#2a2a2a',
                 cursor: status === 'loading' ? 'default' : 'pointer',
                 fontSize: '12px',
