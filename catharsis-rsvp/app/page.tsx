@@ -98,8 +98,8 @@ export default function Home() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                borderBottom: `1px solid ${status === 'error' ? '#cc4444' : '#8a7d74'}`,
-                color: '#2a2a2a',
+                borderBottom: `1px solid ${status === 'error' ? '#cc4444' : '#ffffff'}`,
+                color: '#ffffff',
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: '18px',
                 fontWeight: 300,
