@@ -100,6 +100,7 @@ export default function Home() {
                 border: 'none',
                 borderBottom: `1px solid ${status === 'error' ? '#cc4444' : '#ffffff'}`,
                 color: '#ffffff',
+                WebkitTextFillColor: '#ffffff',
                 fontFamily: 'Cormorant Garamond, serif',
                 fontSize: '18px',
                 fontWeight: 300,
