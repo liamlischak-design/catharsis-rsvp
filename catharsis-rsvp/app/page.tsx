@@ -86,7 +86,7 @@ export default function Home() {
                 marginBottom: '20px',
               }}
             >
-              Join the list for the next album experience
+              Join the list for the next album experience.
             </p>
             <input
               type="email"
@@ -121,10 +121,10 @@ export default function Home() {
               className="pulse-btn"
               disabled={status === 'loading'}
               style={{
-                background: 'transparent',
-                border: '1px solid #8a7d74',
+                background: '#ffffff',
+                border: '1px solid #ffffff',
                 borderRadius: '999px 999px 40px 40px',
-                color: '#5a4e45',
+                color: '#2a2a2a',
                 cursor: status === 'loading' ? 'default' : 'pointer',
                 fontSize: '12px',
                 letterSpacing: '0.16em',
