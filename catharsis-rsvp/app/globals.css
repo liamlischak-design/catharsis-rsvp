@@ -75,7 +75,7 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     var(--stop4) 80%,
     var(--stop5) 100%
   );
-  animation: turrell-cycle 96s ease-in-out infinite;
+  animation: turrell-cycle 56s ease-in-out infinite;
 }
 @keyframes turrell-cycle {
   /* beige */
@@ -125,7 +125,7 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
   position: absolute;
   inset: 0;
   border-radius: 999px 999px 40px 40px;
-  border: 1px solid #8a7d74;
+  border: 1px solid #ffffff;
   animation: pulse-ring 2.4s ease-out infinite;
   pointer-events: none;
 }
