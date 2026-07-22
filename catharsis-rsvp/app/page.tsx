@@ -163,7 +163,7 @@ export default function Home() {
         <span style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           &copy; {new Date().getFullYear()} Catharsis Soundrooms, LLC. All rights reserved.
         </span>
-        <div style={{ display: 'flex', gap: '24px' }}>
+        <div className="footer-links" style={{ display: 'flex', gap: '24px' }}>
           <a href="/privacy" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
           <a href="/terms" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
         </div>
