@@ -45,7 +45,7 @@ export default function Home() {
     <main
       className="turrell-field gate-layout"
       style={{
-        minHeight: '118vh',
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -154,16 +154,17 @@ export default function Home() {
           maxWidth: '900px',
           padding: '32px 24px 32px',
           display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
+          flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
           gap: '12px',
         }}
       >
-        <span className="footer-copyright" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+        <span style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           &copy; {new Date().getFullYear()} Catharsis Soundrooms, LLC. All rights reserved.
         </span>
-        <div className="footer-links" style={{ display: 'flex', gap: '24px' }}>
+        <div style={{ display: 'flex', gap: '24px' }}>
           <a href="/privacy" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Privacy Policy</a>
           <a href="/terms" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Terms</a>
         </div>
