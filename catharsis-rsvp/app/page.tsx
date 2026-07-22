@@ -152,7 +152,7 @@ export default function Home() {
           marginTop: 'auto',
           width: '100%',
           maxWidth: '900px',
-          padding: '20px 24px 32px',
+          padding: '32px 24px 32px',
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
@@ -160,7 +160,7 @@ export default function Home() {
           gap: '12px',
         }}
       >
-        <span style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+        <span className="footer-copyright" style={{ fontSize: '10px', color: '#ffffff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
           &copy; {new Date().getFullYear()} Catharsis Soundrooms, LLC. All rights reserved.
         </span>
         <div className="footer-links" style={{ display: 'flex', gap: '24px' }}>
