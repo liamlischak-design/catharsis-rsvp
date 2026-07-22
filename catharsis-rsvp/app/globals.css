@@ -75,7 +75,7 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     var(--stop4) 80%,
     var(--stop5) 100%
   );
-  animation: turrell-cycle 56s ease-in-out infinite;
+  animation: turrell-cycle 28s ease-in-out infinite;
 }
 @keyframes turrell-cycle {
   /* teal (between green and blue) */
@@ -153,15 +153,5 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 @media (max-width: 640px) {
   .gate-layout {
     padding: 31vh 0 60px;
-  }
-
-  .footer-links {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .footer-copyright {
-    width: 100%;
-    text-align: center;
   }
 }
