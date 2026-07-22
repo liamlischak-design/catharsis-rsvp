@@ -43,24 +43,15 @@ export default function Home() {
 
   return (
     <main
-      className="turrell-field"
+      className="turrell-field gate-layout"
       style={{
-        minHeight: '100vh',
+        minHeight: '118vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'flex-start',
       }}
     >
-      <div
-        className="content-align"
-        style={{
-          flex: '1 1 auto',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
       <div style={{ width: 'min(94vw, 760px)' }}>
         <LogoLockup width={760} />
       </div>
@@ -154,11 +145,11 @@ export default function Home() {
           </form>
         )}
       </div>
-      </div>
 
       <div
         style={{
           borderTop: '1px solid #c8bdb2',
+          marginTop: 'auto',
           width: '100%',
           maxWidth: '900px',
           padding: '20px 24px 32px',
