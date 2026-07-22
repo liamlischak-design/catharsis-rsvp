@@ -83,35 +83,31 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     --stop1: #d0e2d8; --stop2: #b2cfc0; --stop3: #8eb8a3; --stop4: #699d82; --stop5: #4f8066;
   }
   /* blue */
-  11.1111% {
+  12.5% {
     --stop1: #c8dce8; --stop2: #a3c4db; --stop3: #7aa8cc; --stop4: #5088b3; --stop5: #386894;
   }
   /* purple */
-  22.2222% {
+  25% {
     --stop1: #dcc8e8; --stop2: #c4a3db; --stop3: #a87acc; --stop4: #8850b3; --stop5: #683894;
   }
   /* pink */
-  33.3333% {
+  37.5% {
     --stop1: #f0c8d8; --stop2: #e8a3c0; --stop3: #dd7aa3; --stop4: #cc5082; --stop5: #b8386a;
   }
   /* red */
-  44.4444% {
+  50% {
     --stop1: #e8c0c0; --stop2: #dd9494; --stop3: #cc6060; --stop4: #b83838; --stop5: #992020;
   }
-  /* beige */
-  55.5556% {
-    --stop1: #e8dfd6; --stop2: #ddd3c9; --stop3: #d0c5ba; --stop4: #c0b3a8; --stop5: #b0a296;
-  }
   /* orange */
-  66.6667% {
+  62.5% {
     --stop1: #f0c8a0; --stop2: #e8b183; --stop3: #dd9760; --stop4: #cc7d42; --stop5: #b8672e;
   }
   /* yellow */
-  77.7778% {
+  75% {
     --stop1: #f5e8b8; --stop2: #f0dc8f; --stop3: #e8cc5e; --stop4: #dcb832; --stop5: #c9a01f;
   }
   /* green */
-  88.8889% {
+  87.5% {
     --stop1: #d8e8c8; --stop2: #c2dba5; --stop3: #a3c97a; --stop4: #82b350; --stop5: #669938;
   }
 }
@@ -156,6 +152,6 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 
 @media (max-width: 640px) {
   .gate-layout {
-    padding: 27vh 0 60px;
+    padding: 31vh 0 60px;
   }
 }
