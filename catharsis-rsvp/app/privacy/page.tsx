@@ -12,7 +12,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </h1>
 
-        <p style={pStyle}>Last updated: June 2026</p>
+        <p style={pStyle}>Last updated: October 2026</p>
 
         <h2 style={h2Style}>Information We Collect</h2>
         <p style={pStyle}>When you RSVP for a Catharsis Soundrooms event, we collect your first and last name, phone number, and email address. This information is used solely to manage your reservation and send event-related communications.</p>
