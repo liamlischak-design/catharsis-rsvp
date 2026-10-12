@@ -165,14 +165,14 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 
   /* Bigger logo on mobile (transparent edges may extend past the screen; clipped above) */
   .logo-wrap {
-    width: 108vw !important;
+    width: 101vw !important;
   }
 
   /* Match the email underline to the CATHARSIS wordmark width on mobile */
   .email-input {
-    width: 85.3vw !important;
+    width: 79.7vw !important;
   }
   .email-input:placeholder-shown {
-    padding-right: calc(42.65vw - 62px) !important;
+    padding-right: calc(39.85vw - 62px) !important;
   }
 }
