@@ -149,7 +149,7 @@ export default function Home() {
       <div
         style={{
           borderTop: '1px solid #c8bdb2',
-          marginTop: '140px',
+          marginTop: '200px',
           width: '100%',
           maxWidth: '900px',
           padding: '32px 24px 32px',
