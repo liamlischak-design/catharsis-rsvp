@@ -90,7 +90,8 @@ export default function Home() {
             </p>
             <input
               type="email"
-              placeholder="email address"
+              className="email-input"
+              placeholder="enter email"
               value={email}
               required
               onChange={e => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
