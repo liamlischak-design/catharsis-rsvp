@@ -150,6 +150,13 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
   padding: 22vh 0 60px;
 }
 
+/* While the email field is empty, right-align it with padding so the
+   placeholder still looks centered but the cursor sits right after it */
+.email-input:placeholder-shown {
+  text-align: right !important;
+  padding-right: calc(50% - 62px) !important;
+}
+
 @media (max-width: 640px) {
   .gate-layout {
     padding: 31vh 0 60px;
@@ -158,5 +165,8 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
   /* Match the email underline to the CATHARSIS wordmark width on mobile */
   .email-input {
     width: 74.2vw !important;
+  }
+  .email-input:placeholder-shown {
+    padding-right: calc(37.1vw - 62px) !important;
   }
 }
