@@ -30,7 +30,7 @@ export default function TermsPage() {
         <p style={pStyle}>Catharsis Soundrooms reserves the right to modify, postpone, or cancel events. In the event of a cancellation, we will make reasonable efforts to notify registered attendees.</p>
 
         <h2 style={h2Style}>Contact</h2>
-        <p style={pStyle}>For questions about these terms, contact us at hello@catharsis.fm</p>
+        <p style={pStyle}>For questions about these terms, contact us at liam@catharsissoundrooms.com</p>
 
         <div style={{ marginTop: '48px', paddingTop: '24px', borderTop: '1px solid #111' }}>
           <a href="/" style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>← Back to RSVP</a>
