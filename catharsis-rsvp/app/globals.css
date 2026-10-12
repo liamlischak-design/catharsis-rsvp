@@ -60,7 +60,10 @@ a {
   text-decoration: none;
 }
 hr { border: none; border-top: 1px solid #c8bdb2; }
-/* Add this to app/globals.css — animated color field for the gate page */
+/* Animated color field for the gate page (ripple version).
+   Each ring of the glow cycles through the same 8 colors over 28s, but the
+   center runs ~4s ahead of the edges, so color ripples outward instead of
+   the whole field changing at once. */
 @property --stop1 { syntax: '<color>'; inherits: false; initial-value: #d0e2d8; }
 @property --stop2 { syntax: '<color>'; inherits: false; initial-value: #b2cfc0; }
 @property --stop3 { syntax: '<color>'; inherits: false; initial-value: #8eb8a3; }
@@ -75,41 +78,62 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
     var(--stop4) 80%,
     var(--stop5) 100%
   );
-  animation: turrell-cycle 28s ease-in-out infinite;
+  animation:
+    turrell-s1 28s ease-in-out -4s infinite,
+    turrell-s2 28s ease-in-out -3s infinite,
+    turrell-s3 28s ease-in-out -2s infinite,
+    turrell-s4 28s ease-in-out -1s infinite,
+    turrell-s5 28s ease-in-out 0s infinite;
 }
-@keyframes turrell-cycle {
-  /* teal (between green and blue) */
-  0%, 100% {
-    --stop1: #d0e2d8; --stop2: #b2cfc0; --stop3: #8eb8a3; --stop4: #699d82; --stop5: #4f8066;
-  }
-  /* blue */
-  12.5% {
-    --stop1: #c8dce8; --stop2: #a3c4db; --stop3: #7aa8cc; --stop4: #5088b3; --stop5: #386894;
-  }
-  /* purple */
-  25% {
-    --stop1: #dcc8e8; --stop2: #c4a3db; --stop3: #a87acc; --stop4: #8850b3; --stop5: #683894;
-  }
-  /* pink */
-  37.5% {
-    --stop1: #f0c8d8; --stop2: #e8a3c0; --stop3: #dd7aa3; --stop4: #cc5082; --stop5: #b8386a;
-  }
-  /* red */
-  50% {
-    --stop1: #e8c0c0; --stop2: #dd9494; --stop3: #cc6060; --stop4: #b83838; --stop5: #992020;
-  }
-  /* orange */
-  62.5% {
-    --stop1: #f0c8a0; --stop2: #e8b183; --stop3: #dd9760; --stop4: #cc7d42; --stop5: #b8672e;
-  }
-  /* yellow */
-  75% {
-    --stop1: #f5e8b8; --stop2: #f0dc8f; --stop3: #e8cc5e; --stop4: #dcb832; --stop5: #c9a01f;
-  }
-  /* green */
-  87.5% {
-    --stop1: #d8e8c8; --stop2: #c2dba5; --stop3: #a3c97a; --stop4: #82b350; --stop5: #669938;
-  }
+@keyframes turrell-s1 {
+  0%, 100% { --stop1: #d0e2d8; } /* teal */
+  12.5% { --stop1: #c8dce8; } /* blue */
+  25% { --stop1: #dcc8e8; } /* purple */
+  37.5% { --stop1: #f0c8d8; } /* pink */
+  50% { --stop1: #e8c0c0; } /* red */
+  62.5% { --stop1: #f0c8a0; } /* orange */
+  75% { --stop1: #f5e8b8; } /* yellow */
+  87.5% { --stop1: #d8e8c8; } /* green */
+}
+@keyframes turrell-s2 {
+  0%, 100% { --stop2: #b2cfc0; } /* teal */
+  12.5% { --stop2: #a3c4db; } /* blue */
+  25% { --stop2: #c4a3db; } /* purple */
+  37.5% { --stop2: #e8a3c0; } /* pink */
+  50% { --stop2: #dd9494; } /* red */
+  62.5% { --stop2: #e8b183; } /* orange */
+  75% { --stop2: #f0dc8f; } /* yellow */
+  87.5% { --stop2: #c2dba5; } /* green */
+}
+@keyframes turrell-s3 {
+  0%, 100% { --stop3: #8eb8a3; } /* teal */
+  12.5% { --stop3: #7aa8cc; } /* blue */
+  25% { --stop3: #a87acc; } /* purple */
+  37.5% { --stop3: #dd7aa3; } /* pink */
+  50% { --stop3: #cc6060; } /* red */
+  62.5% { --stop3: #dd9760; } /* orange */
+  75% { --stop3: #e8cc5e; } /* yellow */
+  87.5% { --stop3: #a3c97a; } /* green */
+}
+@keyframes turrell-s4 {
+  0%, 100% { --stop4: #699d82; } /* teal */
+  12.5% { --stop4: #5088b3; } /* blue */
+  25% { --stop4: #8850b3; } /* purple */
+  37.5% { --stop4: #cc5082; } /* pink */
+  50% { --stop4: #b83838; } /* red */
+  62.5% { --stop4: #cc7d42; } /* orange */
+  75% { --stop4: #dcb832; } /* yellow */
+  87.5% { --stop4: #82b350; } /* green */
+}
+@keyframes turrell-s5 {
+  0%, 100% { --stop5: #4f8066; } /* teal */
+  12.5% { --stop5: #386894; } /* blue */
+  25% { --stop5: #683894; } /* purple */
+  37.5% { --stop5: #b8386a; } /* pink */
+  50% { --stop5: #992020; } /* red */
+  62.5% { --stop5: #b8672e; } /* orange */
+  75% { --stop5: #c9a01f; } /* yellow */
+  87.5% { --stop5: #669938; } /* green */
 }
 @media (prefers-reduced-motion: reduce) {
   .turrell-field {
