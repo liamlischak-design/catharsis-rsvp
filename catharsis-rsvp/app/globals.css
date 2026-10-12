@@ -160,13 +160,19 @@ hr { border: none; border-top: 1px solid #c8bdb2; }
 @media (max-width: 640px) {
   .gate-layout {
     padding: 31vh 0 60px;
+    overflow-x: clip;
+  }
+
+  /* Bigger logo on mobile (transparent edges may extend past the screen; clipped above) */
+  .logo-wrap {
+    width: 108vw !important;
   }
 
   /* Match the email underline to the CATHARSIS wordmark width on mobile */
   .email-input {
-    width: 74.2vw !important;
+    width: 85.3vw !important;
   }
   .email-input:placeholder-shown {
-    padding-right: calc(37.1vw - 62px) !important;
+    padding-right: calc(42.65vw - 62px) !important;
   }
 }
