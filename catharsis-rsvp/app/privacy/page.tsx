@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         <p style={pStyle}>Your reservation data is stored securely and is retained only as long as necessary to fulfill the purpose for which it was collected.</p>
 
         <h2 style={h2Style}>Contact</h2>
-        <p style={pStyle}>For privacy-related questions, contact us at hello@catharsis.fm</p>
+        <p style={pStyle}>For privacy-related questions, contact us at liam@catharsissoundrooms.com</p>
 
         <div style={{ marginTop: '48px', paddingTop: '24px', borderTop: '1px solid #111' }}>
           <a href="/" style={{ fontSize: '10px', color: '#555', letterSpacing: '0.1em', textTransform: 'uppercase' }}>← Back to RSVP</a>
