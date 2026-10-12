@@ -52,13 +52,13 @@ export default function Home() {
         justifyContent: 'flex-start',
       }}
     >
-      <div style={{ width: 'min(94vw, 760px)' }}>
+      <div className="logo-wrap" style={{ width: 'min(94vw, 760px)' }}>
         <LogoLockup width={760} />
       </div>
 
       <div
         style={{
-          marginTop: 'clamp(40px, 7vh, 80px)',
+          marginTop: 'clamp(56px, 9vh, 104px)',
           width: '100%',
           maxWidth: '680px',
           padding: '0 24px',
@@ -86,7 +86,7 @@ export default function Home() {
                 marginBottom: '20px',
               }}
             >
-              Join the list for the next album experience.
+              Get in line for our next album experience.
             </p>
             <input
               type="email"
