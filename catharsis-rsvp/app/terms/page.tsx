@@ -12,7 +12,7 @@ export default function TermsPage() {
           Terms & Conditions
         </h1>
 
-        <p style={pStyle}>Last updated: June 2026</p>
+        <p style={pStyle}>Last updated: October 2026</p>
 
         <h2 style={h2Style}>Reservations</h2>
         <p style={pStyle}>RSVPs are complimentary and do not require payment. Each reservation is for one named individual. By reserving a spot, you agree to arrive at least 10 minutes before your scheduled session time. Late arrivals may not be admitted once the session has begun.</p>
