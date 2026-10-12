@@ -86,7 +86,7 @@ export default function Home() {
                 marginBottom: '20px',
               }}
             >
-              Get in line for our next album experience.
+              Get in line for the next album experience.
             </p>
             <input
               type="email"
