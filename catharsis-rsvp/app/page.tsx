@@ -80,8 +80,11 @@ export default function Home() {
           <form onSubmit={handleSubmit}>
             <p
               style={{
+                fontFamily: "'Josefin Sans', 'Century Gothic', sans-serif",
+                fontWeight: 500,
                 fontSize: 'clamp(12px, 3.2vw, 18px)',
-                letterSpacing: '0.08em',
+                letterSpacing: '0.13em',
+                textTransform: 'uppercase',
                 color: '#5a4e45',
                 marginBottom: '20px',
               }}
