@@ -86,7 +86,7 @@ export default function Home() {
                 marginBottom: '20px',
               }}
             >
-              Get in line for the next album experience.
+              Step Inside the Album
             </p>
             <input
               type="email"
